@@ -44,7 +44,8 @@
     <RemoveDir Condition="Exists('$(ExportDir)')" Directories="$(ExportDir)" />
     <MakeDir Directories="$(ExportDir)" />
     <MakeDir Directories="$(ExportDir)/zip" />
-    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ExportDir)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ExportDir)/zip" />
+    <Copy SourceFiles="ReadMe.md;$(TargetPath);$(TargetDir)/$(TargetName).pdb" DestinationFolder="$(ExportDir)/zip/" />
     <ZipDirectory SourceDirectory="$(ExportDir)/zip" DestinationFile="$(ExportDir)/$(TargetName).zip" />
     <RemoveDir Directories="$(ExportDir)/zip" />
     <PropertyGroup>
