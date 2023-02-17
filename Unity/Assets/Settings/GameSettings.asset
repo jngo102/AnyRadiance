@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffdad9013372c847b118b915fbd3705, type: 3}
+  m_Name: GameSettings
+  m_EditorClassIdentifier: 
+  gameLanguage: 44
+  backerCredits: 0
+  showNativeAchievementPopups: 0
+  isNativeInput: 1
+  vibrationMuted: 0
+  masterVolume: 10
+  musicVolume: 10
+  soundVolume: 10
+  fullScreen: 2
+  vSync: 0
+  useDisplay: 0
+  overScanAdjustment: 0
+  brightnessAdjustment: 20
+  overscanAdjusted: 0
+  brightnessAdjusted: 0
+  targetFrameRate: 400
+  frameCapOn: 1
+  particleEffectsLevel: 1
+  shaderQuality: 1
+  controllerMapping:
+    gamepadType: 0
+    jump: 19
+    attack: 21
+    dash: 16
+    cast: 20
+    superDash: 15
+    dreamNail: 22
+    quickMap: 17
+    quickCast: 18
+  jumpKey: 
+  attackKey: 
+  dashKey: 
+  castKey: 
+  superDashKey: 
+  dreamNailKey: 
+  quickMapKey: 
+  quickCastKey: 
+  inventoryKey: 
+  upKey: 
+  downKey: 
+  leftKey: 
+  rightKey: 

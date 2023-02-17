@@ -1,0 +1,10 @@
+namespace Galaxy.Api
+{
+	
+	public enum ChatMessageType
+	{
+		CHAT_MESSAGE_TYPE_UNKNOWN,
+		CHAT_MESSAGE_TYPE_CHAT_MESSAGE,
+		CHAT_MESSAGE_TYPE_GAME_INVITATION
+	}
+}

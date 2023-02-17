@@ -1,0 +1,32 @@
+namespace GlobalEnums
+{
+	
+	public enum PhysLayers
+	{
+		DEFAULT = 0,
+		IGNORE_RAYCAST = 2,
+		WATER = 4,
+		UI = 5,
+		TERRAIN = 8,
+		PLAYER = 9,
+		TRANSITION_GATES = 10,
+		ENEMIES = 11,
+		PROJECTILES = 12,
+		HERO_DETECTOR = 13,
+		TERRAIN_DETECTOR = 14,
+		ENEMY_DETECTOR = 15,
+		ITEM = 16,
+		HERO_ATTACK = 17,
+		PARTICLE = 18,
+		INTERACTIVE_OBJECT = 19,
+		HERO_BOX = 20,
+		GRASS = 21,
+		ENEMY_ATTACK = 22,
+		DAMAGE_ALL = 23,
+		BOUNCER = 24,
+		SOFT_TERRAIN = 25,
+		CORPSE = 26,
+		UGUI = 27,
+		MAP_PIN = 30
+	}
+}

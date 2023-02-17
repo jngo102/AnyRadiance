@@ -1,0 +1,2634 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &650279157296448233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 598033197722237191}
+  - component: {fileID: 5264844802006362912}
+  - component: {fileID: 3776520033429864423}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &598033197722237191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650279157296448233}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4936104497058031664}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5264844802006362912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650279157296448233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1384774831, guid: e743331561ef77147ae48cda9bcb8209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fsm:
+    dataVersion: 2
+    usedInTemplate: {fileID: 0}
+    name: Globalise
+    startState: Init
+    states:
+    - name: Init
+      description: 
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 65
+        y: 122
+        width: 120
+        height: 16
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions: []
+      actionData:
+        actionNames:
+        - HutongGames.PlayMaker.Actions.GetOwner
+        - HutongGames.PlayMaker.Actions.SetGameObject
+        customNames:
+        - 
+        - 
+        actionEnabled: 0101
+        actionIsOpen: 0101
+        actionStartIndex: 0000000001000000
+        actionHashCodes: 5c0045054d51cf04
+        unityObjectParams: []
+        fsmGameObjectParams:
+        - useVariable: 1
+          name: Self
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        - useVariable: 1
+          name: AudioManager
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        - useVariable: 1
+          name: Self
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams: []
+        byteData: 00
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 13000000130000001300000001000000
+        paramName:
+        - storeGameObject
+        - variable
+        - gameObject
+        - everyFrame
+        paramDataPos: 00000000010000000200000000000000
+        paramByteDataSize: 00000000000000000000000001000000
+    events:
+    - name: LEVEL LOADED
+      isSystemEvent: 1
+      isGlobal: 0
+    globalTransitions:
+    - fsmEvent:
+        name: LEVEL LOADED
+        isSystemEvent: 1
+        isGlobal: 0
+      toState: Init
+      linkStyle: 0
+      linkConstraint: 0
+      linkTarget: 0
+      colorIndex: 0
+    variables:
+      floatVariables: []
+      intVariables: []
+      boolVariables: []
+      stringVariables: []
+      vector2Variables: []
+      vector3Variables: []
+      colorVariables: []
+      rectVariables: []
+      quaternionVariables: []
+      gameObjectVariables:
+      - useVariable: 1
+        name: Self
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: {fileID: 0}
+      objectVariables: []
+      materialVariables: []
+      textureVariables: []
+      arrayVariables: []
+      enumVariables: []
+      categories:
+      - 
+      variableCategoryIDs: 00000000
+    description: 
+    docUrl: 
+    showStateLabel: 0
+    maxLoopCount: 0
+    watermark: 
+    password: 
+    locked: 0
+    manualUpdate: 0
+    outVariableIndices: 
+    keepDelayedEventsOnStateExit: 0
+    preprocessed: 0
+    ExposedEvents: []
+    OutputEvents: []
+    RestartOnEnable: 1
+    ResetVariablesOnEnable: 0
+    EnableDebugFlow: 0
+    EnableBreakpoints: 1
+    editorFlags: 225
+    activeStateName: 
+    mouseEvents: 0
+    handleLevelLoaded: 0
+    handleTriggerEnter2D: 0
+    handleTriggerExit2D: 0
+    handleTriggerStay2D: 0
+    handleCollisionEnter2D: 0
+    handleCollisionExit2D: 0
+    handleCollisionStay2D: 0
+    handleTriggerEnter: 0
+    handleTriggerExit: 0
+    handleTriggerStay: 0
+    handleCollisionEnter: 0
+    handleCollisionExit: 0
+    handleCollisionStay: 0
+    handleParticleCollision: 0
+    handleControllerColliderHit: 0
+    handleJointBreak: 0
+    handleJointBreak2D: 0
+    handleOnGUI: 0
+    handleFixedUpdate: 0
+    handleLateUpdate: 0
+    handleApplicationEvents: 0
+    handleUiEvents: 0
+    handleLegacyNetworking: 0
+    handleAnimatorMove: 0
+    handleAnimatorIK: 0
+  fsmTemplate: {fileID: 0}
+  eventHandlerComponentsAdded: 0
+--- !u!114 &3776520033429864423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650279157296448233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab7f1b4eaa494c4894d0500077c9739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atmosSources: []
+  audioLoopMaster: {fileID: 0}
+  musicSources: []
+--- !u!1 &8168011083639140517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4936104497058031664}
+  - component: {fileID: -4737931183309376721}
+  - component: {fileID: -7120269472078119809}
+  - component: {fileID: 8866039371794277594}
+  - component: {fileID: 7561658691597372596}
+  - component: {fileID: -6036121174791278336}
+  - component: {fileID: 4053375563945789011}
+  m_Layer: 0
+  m_Name: _GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4936104497058031664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168011083639140517}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 598033197722237191}
+  - {fileID: 8772410289506478980}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4737931183309376721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168011083639140517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7404f7a2877536b42a4c183275e766c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: 0
+  isPaused: 0
+  sceneName: 
+  nextSceneName: 
+  entryGateName: 
+  sceneWidth: 0
+  sceneHeight: 0
+  gameConfig: {fileID: 11400000, guid: 809b8e19707b9984785cf69bffede4a6, type: 2}
+  audioManager: {fileID: 3776520033429864423}
+  inControlManagerPrefab: {fileID: 2006883035818396966, guid: 007299a3bd4dec34dbfdbe9f1a3a8118, type: 3}
+  gameSettings: {fileID: 11400000, guid: 377bffa51eff15a49a003ccfd7b40445, type: 2}
+  timeTool: {fileID: 7561658691597372596}
+  gameMap: {fileID: 0}
+  inventoryFSM: {fileID: 0}
+  playerData:
+    version: 1.5.78.11833
+    awardAllAchievements: 0
+    profileID: 0
+    playTime: 0
+    completionPercent: 0
+    openingCreditsPlayed: 0
+    permadeathMode: 0
+    health: 5
+    maxHealth: 5
+    maxHealthBase: 5
+    healthBlue: 0
+    joniHealthBlue: 0
+    damagedBlue: 0
+    heartPieces: 0
+    heartPieceCollected: 0
+    maxHealthCap: 9
+    heartPieceMax: 0
+    prevHealth: 5
+    blockerHits: 4
+    firstGeo: 0
+    geo: 0
+    maxMP: 99
+    MPCharge: 0
+    MPReserve: 0
+    MPReserveMax: 0
+    soulLimited: 0
+    vesselFragments: 0
+    vesselFragmentCollected: 0
+    MPReserveCap: 99
+    vesselFragmentMax: 0
+    focusMP_amount: 33
+    atBench: 0
+    respawnScene: Tutorial_01
+    mapZone: 2
+    respawnMarkerName: Death Respawn Marker
+    respawnType: 0
+    respawnFacingRight: 0
+    hazardRespawnFacingRight: 0
+    shadeScene: None
+    shadeMapZone: 
+    shadePositionX: -999
+    shadePositionY: -999
+    shadeHealth: 0
+    shadeMP: 0
+    shadeFireballLevel: 0
+    shadeQuakeLevel: 0
+    shadeScreamLevel: 0
+    shadeSpecialType: 0
+    shadeMapPos: {x: 0, y: 0, z: 0}
+    dreamgateMapPos: {x: 0, y: 0, z: 0}
+    geoPool: 0
+    nailDamage: 5
+    nailRange: 0
+    beamDamage: 0
+    canDash: 0
+    canBackDash: 0
+    canWallJump: 0
+    canSuperDash: 0
+    canShadowDash: 0
+    hasSpell: 0
+    fireballLevel: 0
+    quakeLevel: 0
+    screamLevel: 0
+    hasNailArt: 0
+    hasCyclone: 0
+    hasDashSlash: 0
+    hasUpwardSlash: 0
+    hasAllNailArts: 0
+    hasDreamNail: 0
+    hasDreamGate: 0
+    dreamNailUpgraded: 0
+    dreamOrbs: 0
+    dreamOrbsSpent: 0
+    dreamGateScene: 
+    dreamGateX: 0
+    dreamGateY: 0
+    hasDash: 0
+    hasWalljump: 0
+    hasSuperDash: 0
+    hasShadowDash: 0
+    hasAcidArmour: 0
+    hasDoubleJump: 0
+    hasLantern: 0
+    hasTramPass: 0
+    hasQuill: 0
+    hasCityKey: 0
+    hasSlykey: 0
+    gaveSlykey: 0
+    hasWhiteKey: 0
+    usedWhiteKey: 0
+    hasMenderKey: 0
+    hasWaterwaysKey: 0
+    hasSpaKey: 0
+    hasLoveKey: 0
+    hasKingsBrand: 0
+    hasXunFlower: 0
+    ghostCoins: 0
+    ore: 0
+    foundGhostCoin: 0
+    trinket1: 0
+    foundTrinket1: 0
+    trinket2: 0
+    foundTrinket2: 0
+    trinket3: 0
+    foundTrinket3: 0
+    trinket4: 0
+    foundTrinket4: 0
+    noTrinket1: 0
+    noTrinket2: 0
+    noTrinket3: 0
+    noTrinket4: 0
+    soldTrinket1: 0
+    soldTrinket2: 0
+    soldTrinket3: 0
+    soldTrinket4: 0
+    simpleKeys: 0
+    rancidEggs: 0
+    notchShroomOgres: 0
+    notchFogCanyon: 0
+    gotLurkerKey: 0
+    gMap_doorX: 0
+    gMap_doorY: 0
+    gMap_doorScene: 
+    gMap_doorMapZone: 
+    gMap_doorOriginOffsetX: 0
+    gMap_doorOriginOffsetY: 0
+    gMap_doorSceneWidth: 0
+    gMap_doorSceneHeight: 0
+    guardiansDefeated: 0
+    lurienDefeated: 0
+    hegemolDefeated: 0
+    monomonDefeated: 0
+    maskBrokenLurien: 0
+    maskBrokenHegemol: 0
+    maskBrokenMonomon: 0
+    maskToBreak: 0
+    elderbug: 0
+    metElderbug: 0
+    elderbugReintro: 0
+    elderbugHistory: 0
+    elderbugHistory1: 0
+    elderbugHistory2: 0
+    elderbugHistory3: 0
+    elderbugSpeechSly: 0
+    elderbugSpeechStation: 0
+    elderbugSpeechEggTemple: 0
+    elderbugSpeechMapShop: 0
+    elderbugSpeechBretta: 0
+    elderbugSpeechJiji: 0
+    elderbugSpeechMinesLift: 0
+    elderbugSpeechKingsPass: 0
+    elderbugSpeechInfectedCrossroads: 0
+    elderbugSpeechFinalBossDoor: 0
+    elderbugRequestedFlower: 0
+    elderbugGaveFlower: 0
+    elderbugFirstCall: 0
+    metQuirrel: 0
+    quirrelEggTemple: 0
+    quirrelSlugShrine: 0
+    quirrelRuins: 0
+    quirrelMines: 0
+    quirrelLeftStation: 0
+    quirrelLeftEggTemple: 0
+    quirrelCityEncountered: 0
+    quirrelCityLeft: 0
+    quirrelMinesEncountered: 0
+    quirrelMinesLeft: 0
+    quirrelMantisEncountered: 0
+    enteredMantisLordArea: 0
+    visitedDeepnestSpa: 0
+    quirrelSpaReady: 0
+    quirrelSpaEncountered: 0
+    quirrelArchiveEncountered: 0
+    quirrelEpilogueCompleted: 0
+    metRelicDealer: 0
+    metRelicDealerShop: 0
+    marmOutside: 0
+    marmOutsideConvo: 0
+    marmConvo1: 0
+    marmConvo2: 0
+    marmConvo3: 0
+    marmConvoNailsmith: 0
+    cornifer: 0
+    metCornifer: 0
+    corniferIntroduced: 0
+    corniferAtHome: 0
+    corn_crossroadsEncountered: 0
+    corn_crossroadsLeft: 0
+    corn_greenpathEncountered: 0
+    corn_greenpathLeft: 0
+    corn_fogCanyonEncountered: 0
+    corn_fogCanyonLeft: 0
+    corn_fungalWastesEncountered: 0
+    corn_fungalWastesLeft: 0
+    corn_cityEncountered: 0
+    corn_cityLeft: 0
+    corn_waterwaysEncountered: 0
+    corn_waterwaysLeft: 0
+    corn_minesEncountered: 0
+    corn_minesLeft: 0
+    corn_cliffsEncountered: 0
+    corn_cliffsLeft: 0
+    corn_deepnestEncountered: 0
+    corn_deepnestLeft: 0
+    corn_deepnestMet1: 0
+    corn_deepnestMet2: 0
+    corn_outskirtsEncountered: 0
+    corn_outskirtsLeft: 0
+    corn_royalGardensEncountered: 0
+    corn_royalGardensLeft: 0
+    corn_abyssEncountered: 0
+    corn_abyssLeft: 0
+    metIselda: 0
+    iseldaCorniferHomeConvo: 0
+    iseldaConvo1: 0
+    brettaRescued: 0
+    brettaPosition: 0
+    brettaState: 0
+    brettaSeenBench: 0
+    brettaSeenBed: 0
+    brettaSeenBenchDiary: 0
+    brettaSeenBedDiary: 0
+    brettaLeftTown: 0
+    slyRescued: 0
+    slyBeta: 0
+    metSlyShop: 0
+    gotSlyCharm: 0
+    slyShellFrag1: 0
+    slyShellFrag2: 0
+    slyShellFrag3: 0
+    slyShellFrag4: 0
+    slyVesselFrag1: 0
+    slyVesselFrag2: 0
+    slyVesselFrag3: 0
+    slyVesselFrag4: 0
+    slyNotch1: 0
+    slyNotch2: 0
+    slySimpleKey: 0
+    slyRancidEgg: 0
+    slyConvoNailArt: 0
+    slyConvoMapper: 0
+    slyConvoNailHoned: 0
+    jijiDoorUnlocked: 0
+    jijiMet: 0
+    jijiShadeOffered: 0
+    jijiShadeCharmConvo: 0
+    metJinn: 0
+    jinnConvo1: 0
+    jinnConvo2: 0
+    jinnConvo3: 0
+    jinnConvoKingBrand: 0
+    jinnConvoShadeCharm: 0
+    jinnEggsSold: 0
+    zote: 0
+    zoteRescuedBuzzer: 0
+    zoteDead: 0
+    zoteDeathPos: 0
+    zoteSpokenCity: 0
+    zoteLeftCity: 0
+    zoteTrappedDeepnest: 0
+    zoteRescuedDeepnest: 0
+    zoteDefeated: 0
+    zoteSpokenColosseum: 0
+    zotePrecept: 1
+    zoteTownConvo: 0
+    shaman: 0
+    shamanScreamConvo: 0
+    shamanQuakeConvo: 0
+    shamanFireball2Convo: 0
+    shamanScream2Convo: 0
+    shamanQuake2Convo: 0
+    metMiner: 0
+    miner: 0
+    minerEarly: 0
+    hornetGreenpath: 0
+    hornetFung: 0
+    hornet_f19: 0
+    hornetFountainEncounter: 0
+    hornetCityBridge_ready: 0
+    hornetCityBridge_completed: 0
+    hornetAbyssEncounter: 0
+    hornetDenEncounter: 0
+    metMoth: 0
+    ignoredMoth: 0
+    gladeDoorOpened: 0
+    mothDeparted: 0
+    completedRGDreamPlant: 0
+    dreamReward1: 0
+    dreamReward2: 0
+    dreamReward3: 0
+    dreamReward4: 0
+    dreamReward5: 0
+    dreamReward5b: 0
+    dreamReward6: 0
+    dreamReward7: 0
+    dreamReward8: 0
+    dreamReward9: 0
+    dreamMothConvo1: 0
+    bankerAccountPurchased: 0
+    metBanker: 0
+    bankerBalance: 0
+    bankerDeclined: 0
+    bankerTheftCheck: 0
+    bankerTheft: 0
+    bankerSpaMet: 0
+    metGiraffe: 0
+    metCharmSlug: 0
+    salubraNotch1: 0
+    salubraNotch2: 0
+    salubraNotch3: 0
+    salubraNotch4: 0
+    salubraBlessing: 0
+    salubraConvoCombo: 0
+    salubraConvoOvercharm: 0
+    salubraConvoTruth: 0
+    cultistTransformed: 0
+    metNailsmith: 0
+    nailSmithUpgrades: 0
+    honedNail: 0
+    nailsmithCliff: 0
+    nailsmithKilled: 0
+    nailsmithSpared: 0
+    nailsmithKillSpeech: 0
+    nailsmithSheo: 0
+    nailsmithConvoArt: 0
+    metNailmasterMato: 0
+    metNailmasterSheo: 0
+    metNailmasterOro: 0
+    matoConvoSheo: 0
+    matoConvoOro: 0
+    matoConvoSly: 0
+    sheoConvoMato: 0
+    sheoConvoOro: 0
+    sheoConvoSly: 0
+    sheoConvoNailsmith: 0
+    oroConvoSheo: 0
+    oroConvoMato: 0
+    oroConvoSly: 0
+    hunterRoared: 0
+    metHunter: 0
+    hunterRewardOffered: 0
+    huntersMarkOffered: 0
+    hasHuntersMark: 0
+    metLegEater: 0
+    paidLegEater: 0
+    refusedLegEater: 0
+    legEaterConvo1: 0
+    legEaterConvo2: 0
+    legEaterConvo3: 0
+    legEaterBrokenConvo: 0
+    legEaterDungConvo: 0
+    legEaterInfectedCrossroadConvo: 0
+    legEaterBoughtConvo: 0
+    legEaterGoldConvo: 0
+    legEaterLeft: 0
+    tukMet: 0
+    tukEggPrice: 0
+    tukDungEgg: 0
+    metEmilitia: 0
+    emilitiaKingsBrandConvo: 0
+    metCloth: 0
+    clothEnteredTramRoom: 0
+    savedCloth: 0
+    clothEncounteredQueensGarden: 0
+    clothKilled: 0
+    clothInTown: 0
+    clothLeftTown: 0
+    clothGhostSpoken: 0
+    bigCatHitTail: 0
+    bigCatHitTailConvo: 0
+    bigCatMeet: 0
+    bigCatTalk1: 0
+    bigCatTalk2: 0
+    bigCatTalk3: 0
+    bigCatKingsBrandConvo: 0
+    bigCatShadeConvo: 0
+    tisoEncounteredTown: 0
+    tisoEncounteredBench: 0
+    tisoEncounteredLake: 0
+    tisoEncounteredColosseum: 0
+    tisoDead: 0
+    tisoShieldConvo: 0
+    mossCultist: 0
+    maskmakerMet: 0
+    maskmakerConvo1: 0
+    maskmakerConvo2: 0
+    maskmakerUnmasked1: 0
+    maskmakerUnmasked2: 0
+    maskmakerShadowDash: 0
+    maskmakerKingsBrand: 0
+    dungDefenderConvo1: 0
+    dungDefenderConvo2: 0
+    dungDefenderConvo3: 0
+    dungDefenderCharmConvo: 0
+    dungDefenderIsmaConvo: 0
+    dungDefenderAwoken: 0
+    dungDefenderLeft: 0
+    dungDefenderAwakeConvo: 0
+    midwifeMet: 0
+    midwifeConvo1: 0
+    midwifeConvo2: 0
+    metQueen: 0
+    queenTalk1: 0
+    queenTalk2: 0
+    queenDung1: 0
+    queenDung2: 0
+    queenHornet: 0
+    queenTalkExtra: 0
+    gotQueenFragment: 0
+    queenConvo_grimm1: 0
+    queenConvo_grimm2: 0
+    gotKingFragment: 0
+    metXun: 0
+    xunFailedConvo1: 0
+    xunFailedConvo2: 1
+    xunFlowerBroken: 0
+    xunFlowerBrokeTimes: 0
+    xunFlowerGiven: 0
+    xunRewardGiven: 0
+    menderState: 0
+    menderSignBroken: 0
+    allBelieverTabletsDestroyed: 0
+    mrMushroomState: 0
+    openedMapperShop: 0
+    openedSlyShop: 0
+    metStag: 0
+    travelling: 0
+    stagPosition: -1
+    stationsOpened: 0
+    stagConvoTram: 0
+    stagConvoTiso: 0
+    stagRemember1: 0
+    stagRemember2: 0
+    stagRemember3: 0
+    stagEggInspected: 0
+    stagHopeConvo: 0
+    nextScene: 
+    littleFoolMet: 0
+    ranAway: 0
+    seenColosseumTitle: 0
+    colosseumBronzeOpened: 0
+    colosseumBronzeCompleted: 0
+    colosseumSilverOpened: 0
+    colosseumSilverCompleted: 0
+    colosseumGoldOpened: 0
+    colosseumGoldCompleted: 0
+    openedTown: 1
+    openedTownBuilding: 0
+    openedCrossroads: 0
+    openedGreenpath: 0
+    openedRuins1: 0
+    openedRuins2: 0
+    openedFungalWastes: 0
+    openedRoyalGardens: 0
+    openedRestingGrounds: 0
+    openedDeepnest: 0
+    openedStagNest: 0
+    openedHiddenStation: 0
+    dreamReturnScene: Dream_NailCollection
+    charmSlots: 3
+    charmSlotsFilled: 0
+    hasCharm: 0
+    equippedCharms: 
+    charmBenchMsg: 0
+    charmsOwned: 0
+    canOvercharm: 0
+    overcharmed: 0
+    gotCharm_1: 0
+    equippedCharm_1: 0
+    charmCost_1: 1
+    newCharm_1: 1
+    gotCharm_2: 0
+    equippedCharm_2: 0
+    charmCost_2: 1
+    newCharm_2: 1
+    gotCharm_3: 0
+    equippedCharm_3: 0
+    charmCost_3: 1
+    newCharm_3: 1
+    gotCharm_4: 0
+    equippedCharm_4: 0
+    charmCost_4: 2
+    newCharm_4: 1
+    gotCharm_5: 0
+    equippedCharm_5: 0
+    charmCost_5: 2
+    newCharm_5: 1
+    gotCharm_6: 0
+    equippedCharm_6: 0
+    charmCost_6: 2
+    newCharm_6: 1
+    gotCharm_7: 0
+    equippedCharm_7: 0
+    charmCost_7: 3
+    newCharm_7: 1
+    gotCharm_8: 0
+    equippedCharm_8: 0
+    charmCost_8: 2
+    newCharm_8: 1
+    gotCharm_9: 0
+    equippedCharm_9: 0
+    charmCost_9: 3
+    newCharm_9: 1
+    gotCharm_10: 0
+    equippedCharm_10: 0
+    charmCost_10: 1
+    newCharm_10: 1
+    gotCharm_11: 0
+    equippedCharm_11: 0
+    charmCost_11: 3
+    newCharm_11: 1
+    gotCharm_12: 0
+    equippedCharm_12: 0
+    charmCost_12: 1
+    newCharm_12: 1
+    gotCharm_13: 0
+    equippedCharm_13: 0
+    charmCost_13: 3
+    newCharm_13: 1
+    gotCharm_14: 0
+    equippedCharm_14: 0
+    charmCost_14: 1
+    newCharm_14: 1
+    gotCharm_15: 0
+    equippedCharm_15: 0
+    charmCost_15: 2
+    newCharm_15: 1
+    gotCharm_16: 0
+    equippedCharm_16: 0
+    charmCost_16: 2
+    newCharm_16: 1
+    gotCharm_17: 0
+    equippedCharm_17: 0
+    charmCost_17: 1
+    newCharm_17: 1
+    gotCharm_18: 0
+    equippedCharm_18: 0
+    charmCost_18: 2
+    newCharm_18: 1
+    gotCharm_19: 0
+    equippedCharm_19: 0
+    charmCost_19: 3
+    newCharm_19: 1
+    gotCharm_20: 0
+    equippedCharm_20: 0
+    charmCost_20: 2
+    newCharm_20: 1
+    gotCharm_21: 0
+    equippedCharm_21: 0
+    charmCost_21: 4
+    newCharm_21: 1
+    gotCharm_22: 0
+    equippedCharm_22: 0
+    charmCost_22: 2
+    newCharm_22: 1
+    gotCharm_23: 0
+    equippedCharm_23: 0
+    brokenCharm_23: 0
+    charmCost_23: 2
+    newCharm_23: 1
+    gotCharm_24: 0
+    equippedCharm_24: 0
+    brokenCharm_24: 0
+    charmCost_24: 2
+    newCharm_24: 1
+    gotCharm_25: 0
+    equippedCharm_25: 0
+    brokenCharm_25: 0
+    charmCost_25: 3
+    newCharm_25: 1
+    gotCharm_26: 0
+    equippedCharm_26: 0
+    charmCost_26: 1
+    newCharm_26: 1
+    gotCharm_27: 0
+    equippedCharm_27: 0
+    charmCost_27: 4
+    newCharm_27: 1
+    gotCharm_28: 0
+    equippedCharm_28: 0
+    charmCost_28: 2
+    newCharm_28: 1
+    gotCharm_29: 0
+    equippedCharm_29: 0
+    charmCost_29: 4
+    newCharm_29: 1
+    gotCharm_30: 0
+    equippedCharm_30: 0
+    charmCost_30: 1
+    newCharm_30: 1
+    gotCharm_31: 0
+    equippedCharm_31: 0
+    charmCost_31: 2
+    newCharm_31: 1
+    gotCharm_32: 0
+    equippedCharm_32: 0
+    charmCost_32: 3
+    newCharm_32: 1
+    gotCharm_33: 0
+    equippedCharm_33: 0
+    charmCost_33: 2
+    newCharm_33: 1
+    gotCharm_34: 0
+    equippedCharm_34: 0
+    charmCost_34: 4
+    newCharm_34: 1
+    gotCharm_35: 0
+    equippedCharm_35: 0
+    charmCost_35: 3
+    newCharm_35: 1
+    gotCharm_36: 0
+    equippedCharm_36: 0
+    charmCost_36: 5
+    newCharm_36: 1
+    gotCharm_37: 0
+    equippedCharm_37: 0
+    charmCost_37: 1
+    newCharm_37: 0
+    gotCharm_38: 0
+    equippedCharm_38: 0
+    charmCost_38: 3
+    newCharm_38: 0
+    gotCharm_39: 0
+    equippedCharm_39: 0
+    charmCost_39: 2
+    newCharm_39: 0
+    gotCharm_40: 0
+    equippedCharm_40: 0
+    charmCost_40: 2
+    newCharm_40: 0
+    fragileHealth_unbreakable: 0
+    fragileGreed_unbreakable: 0
+    fragileStrength_unbreakable: 0
+    royalCharmState: 0
+    hasJournal: 0
+    lastJournalItem: 0
+    killedDummy: 0
+    killsDummy: 0
+    newDataDummy: 0
+    seenJournalMsg: 0
+    seenHunterMsg: 0
+    fillJournal: 0
+    journalEntriesCompleted: 0
+    journalNotesCompleted: 0
+    journalEntriesTotal: 0
+    killedCrawler: 1
+    killsCrawler: 0
+    newDataCrawler: 0
+    killedBuzzer: 0
+    killsBuzzer: 45
+    newDataBuzzer: 0
+    killedBouncer: 0
+    killsBouncer: 25
+    newDataBouncer: 0
+    killedClimber: 0
+    killsClimber: 30
+    newDataClimber: 0
+    killedHopper: 0
+    killsHopper: 25
+    newDataHopper: 0
+    killedWorm: 0
+    killsWorm: 10
+    newDataWorm: 0
+    killedSpitter: 0
+    killsSpitter: 20
+    newDataSpitter: 0
+    killedHatcher: 0
+    killsHatcher: 15
+    newDataHatcher: 0
+    killedHatchling: 0
+    killsHatchling: 30
+    newDataHatchling: 0
+    killedZombieRunner: 0
+    killsZombieRunner: 35
+    newDataZombieRunner: 0
+    killedZombieHornhead: 0
+    killsZombieHornhead: 35
+    newDataZombieHornhead: 0
+    killedZombieLeaper: 0
+    killsZombieLeaper: 35
+    newDataZombieLeaper: 0
+    killedZombieBarger: 0
+    killsZombieBarger: 35
+    newDataZombieBarger: 0
+    killedZombieShield: 0
+    killsZombieShield: 10
+    newDataZombieShield: 0
+    killedZombieGuard: 0
+    killsZombieGuard: 6
+    newDataZombieGuard: 0
+    killedBigBuzzer: 0
+    killsBigBuzzer: 2
+    newDataBigBuzzer: 0
+    killedBigFly: 0
+    killsBigFly: 3
+    newDataBigFly: 0
+    killedMawlek: 0
+    killsMawlek: 1
+    newDataMawlek: 0
+    killedFalseKnight: 0
+    killsFalseKnight: 1
+    newDataFalseKnight: 0
+    killedRoller: 0
+    killsRoller: 20
+    newDataRoller: 0
+    killedBlocker: 0
+    killsBlocker: 1
+    newDataBlocker: 0
+    killedPrayerSlug: 0
+    killsPrayerSlug: 2
+    newDataPrayerSlug: 0
+    killedMenderBug: 0
+    killsMenderBug: 1
+    newDataMenderBug: 0
+    killedMossmanRunner: 0
+    killsMossmanRunner: 25
+    newDataMossmanRunner: 0
+    killedMossmanShaker: 0
+    killsMossmanShaker: 25
+    newDataMossmanShaker: 0
+    killedMosquito: 0
+    killsMosquito: 25
+    newDataMosquito: 0
+    killedBlobFlyer: 0
+    killsBlobFlyer: 20
+    newDataBlobFlyer: 0
+    killedFungifiedZombie: 0
+    killsFungifiedZombie: 10
+    newDataFungifiedZombie: 0
+    killedPlantShooter: 0
+    killsPlantShooter: 15
+    newDataPlantShooter: 0
+    killedMossCharger: 0
+    killsMossCharger: 15
+    newDataMossCharger: 0
+    killedMegaMossCharger: 0
+    killsMegaMossCharger: 1
+    newDataMegaMossCharger: 0
+    killedSnapperTrap: 0
+    killsSnapperTrap: 15
+    newDataSnapperTrap: 0
+    killedMossKnight: 0
+    killsMossKnight: 8
+    newDataMossKnight: 0
+    killedGrassHopper: 0
+    killsGrassHopper: 15
+    newDataGrassHopper: 0
+    killedAcidFlyer: 0
+    killsAcidFlyer: 8
+    newDataAcidFlyer: 0
+    killedAcidWalker: 0
+    killsAcidWalker: 8
+    newDataAcidWalker: 0
+    killedMossFlyer: 0
+    killsMossFlyer: 25
+    newDataMossFlyer: 0
+    killedMossKnightFat: 0
+    killsMossKnightFat: 10
+    newDataMossKnightFat: 0
+    killedMossWalker: 0
+    killsMossWalker: 30
+    newDataMossWalker: 0
+    killedInfectedKnight: 0
+    killsInfectedKnight: 1
+    newDataInfectedKnight: 0
+    killedLazyFlyer: 0
+    killsLazyFlyer: 1
+    newDataLazyFlyer: 0
+    killedZapBug: 0
+    killsZapBug: 1
+    newDataZapBug: 0
+    killedJellyfish: 0
+    killsJellyfish: 12
+    newDataJellyfish: 0
+    killedJellyCrawler: 0
+    killsJellyCrawler: 20
+    newDataJellyCrawler: 0
+    killedMegaJellyfish: 0
+    killsMegaJellyfish: 1
+    newDataMegaJellyfish: 0
+    killedFungoonBaby: 0
+    killsFungoonBaby: 30
+    newDataFungoonBaby: 0
+    killedMushroomTurret: 0
+    killsMushroomTurret: 20
+    newDataMushroomTurret: 0
+    killedMantis: 0
+    killsMantis: 25
+    newDataMantis: 0
+    killedMushroomRoller: 0
+    killsMushroomRoller: 20
+    newDataMushroomRoller: 0
+    killedMushroomBrawler: 0
+    killsMushroomBrawler: 8
+    newDataMushroomBrawler: 0
+    killedMushroomBaby: 0
+    killsMushroomBaby: 20
+    newDataMushroomBaby: 0
+    killedMantisFlyerChild: 0
+    killsMantisFlyerChild: 25
+    newDataMantisFlyerChild: 0
+    killedFungusFlyer: 0
+    killsFungusFlyer: 20
+    newDataFungusFlyer: 0
+    killedFungCrawler: 0
+    killsFungCrawler: 15
+    newDataFungCrawler: 0
+    killedMantisLord: 0
+    killsMantisLord: 1
+    newDataMantisLord: 0
+    killedBlackKnight: 0
+    killsBlackKnight: 10
+    newDataBlackKnight: 0
+    killedElectricMage: 0
+    killsElectricMage: 6
+    newDataElectricMage: 0
+    killedMage: 0
+    killsMage: 20
+    newDataMage: 0
+    killedMageKnight: 0
+    killsMageKnight: 2
+    newDataMageKnight: 0
+    killedRoyalDandy: 0
+    killsRoyalDandy: 25
+    newDataRoyalDandy: 0
+    killedRoyalCoward: 0
+    killsRoyalCoward: 25
+    newDataRoyalCoward: 0
+    killedRoyalPlumper: 0
+    killsRoyalPlumper: 25
+    newDataRoyalPlumper: 0
+    killedFlyingSentrySword: 0
+    killsFlyingSentrySword: 30
+    newDataFlyingSentrySword: 0
+    killedFlyingSentryJavelin: 0
+    killsFlyingSentryJavelin: 25
+    newDataFlyingSentryJavelin: 0
+    killedSentry: 0
+    killsSentry: 25
+    newDataSentry: 0
+    killedSentryFat: 0
+    killsSentryFat: 20
+    newDataSentryFat: 0
+    killedMageBlob: 0
+    killsMageBlob: 25
+    newDataMageBlob: 0
+    killedGreatShieldZombie: 0
+    killsGreatShieldZombie: 10
+    newDataGreatShieldZombie: 0
+    killedJarCollector: 0
+    killsJarCollector: 1
+    newDataJarCollector: 0
+    killedMageBalloon: 0
+    killsMageBalloon: 15
+    newDataMageBalloon: 0
+    killedMageLord: 0
+    killsMageLord: 1
+    newDataMageLord: 0
+    killedGorgeousHusk: 0
+    killsGorgeousHusk: 1
+    newDataGorgeousHusk: 0
+    killedFlipHopper: 0
+    killsFlipHopper: 20
+    newDataFlipHopper: 0
+    killedFlukeman: 0
+    killsFlukeman: 20
+    newDataFlukeman: 0
+    killedInflater: 0
+    killsInflater: 20
+    newDataInflater: 0
+    killedFlukefly: 0
+    killsFlukefly: 15
+    newDataFlukefly: 0
+    killedFlukeMother: 0
+    killsFlukeMother: 1
+    newDataFlukeMother: 0
+    killedDungDefender: 0
+    killsDungDefender: 1
+    newDataDungDefender: 0
+    killedCrystalCrawler: 0
+    killsCrystalCrawler: 15
+    newDataCrystalCrawler: 0
+    killedCrystalFlyer: 0
+    killsCrystalFlyer: 20
+    newDataCrystalFlyer: 0
+    killedLaserBug: 0
+    killsLaserBug: 15
+    newDataLaserBug: 0
+    killedBeamMiner: 0
+    killsBeamMiner: 15
+    newDataBeamMiner: 0
+    killedZombieMiner: 0
+    killsZombieMiner: 20
+    newDataZombieMiner: 0
+    killedMegaBeamMiner: 0
+    killsMegaBeamMiner: 2
+    newDataMegaBeamMiner: 0
+    killedMinesCrawler: 0
+    killsMinesCrawler: 15
+    newDataMinesCrawler: 0
+    killedAngryBuzzer: 0
+    killsAngryBuzzer: 15
+    newDataAngryBuzzer: 0
+    killedBurstingBouncer: 0
+    killsBurstingBouncer: 15
+    newDataBurstingBouncer: 0
+    killedBurstingZombie: 0
+    killsBurstingZombie: 15
+    newDataBurstingZombie: 0
+    killedSpittingZombie: 0
+    killsSpittingZombie: 15
+    newDataSpittingZombie: 0
+    killedBabyCentipede: 0
+    killsBabyCentipede: 35
+    newDataBabyCentipede: 0
+    killedBigCentipede: 0
+    killsBigCentipede: 10
+    newDataBigCentipede: 0
+    killedCentipedeHatcher: 0
+    killsCentipedeHatcher: 15
+    newDataCentipedeHatcher: 0
+    killedLesserMawlek: 0
+    killsLesserMawlek: 10
+    newDataLesserMawlek: 0
+    killedSlashSpider: 0
+    killsSlashSpider: 15
+    newDataSlashSpider: 0
+    killedSpiderCorpse: 0
+    killsSpiderCorpse: 15
+    newDataSpiderCorpse: 0
+    killedShootSpider: 0
+    killsShootSpider: 20
+    newDataShootSpider: 0
+    killedMiniSpider: 0
+    killsMiniSpider: 25
+    newDataMiniSpider: 0
+    killedSpiderFlyer: 0
+    killsSpiderFlyer: 20
+    newDataSpiderFlyer: 0
+    killedMimicSpider: 0
+    killsMimicSpider: 1
+    newDataMimicSpider: 0
+    killedBeeHatchling: 0
+    killsBeeHatchling: 30
+    newDataBeeHatchling: 0
+    killedBeeStinger: 0
+    killsBeeStinger: 15
+    newDataBeeStinger: 0
+    killedBigBee: 0
+    killsBigBee: 12
+    newDataBigBee: 0
+    killedHiveKnight: 0
+    killsHiveKnight: 1
+    newDataHiveKnight: 0
+    killedBlowFly: 0
+    killsBlowFly: 20
+    newDataBlowFly: 0
+    killedCeilingDropper: 0
+    killsCeilingDropper: 15
+    newDataCeilingDropper: 0
+    killedGiantHopper: 0
+    killsGiantHopper: 10
+    newDataGiantHopper: 0
+    killedGrubMimic: 0
+    killsGrubMimic: 5
+    newDataGrubMimic: 0
+    killedMawlekTurret: 0
+    killsMawlekTurret: 10
+    newDataMawlekTurret: 0
+    killedOrangeScuttler: 0
+    killsOrangeScuttler: 20
+    newDataOrangeScuttler: 0
+    killedHealthScuttler: 0
+    killsHealthScuttler: 10
+    newDataHealthScuttler: 0
+    killedPigeon: 0
+    killsPigeon: 15
+    newDataPigeon: 0
+    killedZombieHive: 0
+    killsZombieHive: 10
+    newDataZombieHive: 0
+    killedDreamGuard: 0
+    killsDreamGuard: 20
+    newDataDreamGuard: 0
+    killedHornet: 0
+    killsHornet: 2
+    newDataHornet: 0
+    killedAbyssCrawler: 0
+    killsAbyssCrawler: 20
+    newDataAbyssCrawler: 0
+    killedSuperSpitter: 0
+    killsSuperSpitter: 25
+    newDataSuperSpitter: 0
+    killedSibling: 0
+    killsSibling: 25
+    newDataSibling: 0
+    killedPalaceFly: 0
+    killsPalaceFly: 10
+    newDataPalaceFly: 0
+    killedEggSac: 0
+    killsEggSac: 5
+    newDataEggSac: 0
+    killedMummy: 0
+    killsMummy: 10
+    newDataMummy: 0
+    killedOrangeBalloon: 0
+    killsOrangeBalloon: 10
+    newDataOrangeBalloon: 0
+    killedAbyssTendril: 0
+    killsAbyssTendril: 10
+    newDataAbyssTendril: 0
+    killedHeavyMantis: 0
+    killsHeavyMantis: 15
+    newDataHeavyMantis: 0
+    killedTraitorLord: 0
+    killsTraitorLord: 1
+    newDataTraitorLord: 0
+    killedMantisHeavyFlyer: 0
+    killsMantisHeavyFlyer: 16
+    newDataMantisHeavyFlyer: 0
+    killedGardenZombie: 0
+    killsGardenZombie: 20
+    newDataGardenZombie: 0
+    killedRoyalGuard: 0
+    killsRoyalGuard: 2
+    newDataRoyalGuard: 0
+    killedWhiteRoyal: 0
+    killsWhiteRoyal: 10
+    newDataWhiteRoyal: 0
+    openedPalaceGrounds: 0
+    killedOblobble: 0
+    killsOblobble: 3
+    newDataOblobble: 0
+    killedZote: 0
+    killsZote: 1
+    newDataZote: 0
+    killedBlobble: 0
+    killsBlobble: 15
+    newDataBlobble: 0
+    killedColMosquito: 0
+    killsColMosquito: 15
+    newDataColMosquito: 0
+    killedColRoller: 0
+    killsColRoller: 20
+    newDataColRoller: 0
+    killedColFlyingSentry: 0
+    killsColFlyingSentry: 25
+    newDataColFlyingSentry: 0
+    killedColMiner: 0
+    killsColMiner: 25
+    newDataColMiner: 0
+    killedColShield: 0
+    killsColShield: 25
+    newDataColShield: 0
+    killedColWorm: 0
+    killsColWorm: 20
+    newDataColWorm: 0
+    killedColHopper: 0
+    killsColHopper: 15
+    newDataColHopper: 0
+    killedLobsterLancer: 0
+    killsLobsterLancer: 1
+    newDataLobsterLancer: 0
+    killedGhostAladar: 0
+    killsGhostAladar: 1
+    newDataGhostAladar: 0
+    killedGhostXero: 0
+    killsGhostXero: 1
+    newDataGhostXero: 0
+    killedGhostHu: 0
+    killsGhostHu: 1
+    newDataGhostHu: 0
+    killedGhostMarmu: 0
+    killsGhostMarmu: 1
+    newDataGhostMarmu: 0
+    killedGhostNoEyes: 0
+    killsGhostNoEyes: 1
+    newDataGhostNoEyes: 0
+    killedGhostMarkoth: 0
+    killsGhostMarkoth: 1
+    newDataGhostMarkoth: 0
+    killedGhostGalien: 0
+    killsGhostGalien: 1
+    newDataGhostGalien: 0
+    killedWhiteDefender: 0
+    killsWhiteDefender: 1
+    newDataWhiteDefender: 0
+    killedGreyPrince: 0
+    killsGreyPrince: 1
+    newDataGreyPrince: 0
+    killedZotelingBalloon: 0
+    killsZotelingBalloon: 1
+    newDataZotelingBalloon: 0
+    killedZotelingHopper: 0
+    killsZotelingHopper: 1
+    newDataZotelingHopper: 0
+    killedZotelingBuzzer: 0
+    killsZotelingBuzzer: 1
+    newDataZotelingBuzzer: 0
+    killedHollowKnight: 0
+    killsHollowKnight: 1
+    newDataHollowKnight: 0
+    killedFinalBoss: 0
+    killsFinalBoss: 1
+    newDataFinalBoss: 0
+    killedHunterMark: 0
+    killsHunterMark: 1
+    newDataHunterMark: 0
+    killedFlameBearerSmall: 0
+    killsFlameBearerSmall: 3
+    newDataFlameBearerSmall: 0
+    killedFlameBearerMed: 0
+    killsFlameBearerMed: 4
+    newDataFlameBearerMed: 0
+    killedFlameBearerLarge: 0
+    killsFlameBearerLarge: 5
+    newDataFlameBearerLarge: 0
+    killedGrimm: 0
+    killsGrimm: 1
+    newDataGrimm: 0
+    killedNightmareGrimm: 0
+    killsNightmareGrimm: 1
+    newDataNightmareGrimm: 0
+    killedBindingSeal: 0
+    killsBindingSeal: 1
+    newDataBindingSeal: 0
+    killedFatFluke: 0
+    killsFatFluke: 8
+    newDataFatFluke: 0
+    killedPaleLurker: 0
+    killsPaleLurker: 1
+    newDataPaleLurker: 0
+    killedNailBros: 0
+    killsNailBros: 1
+    newDataNailBros: 0
+    killedPaintmaster: 0
+    killsPaintmaster: 1
+    newDataPaintmaster: 0
+    killedNailsage: 0
+    killsNailsage: 1
+    newDataNailsage: 0
+    killedHollowKnightPrime: 0
+    killsHollowKnightPrime: 1
+    newDataHollowKnightPrime: 0
+    killedGodseekerMask: 0
+    killsGodseekerMask: 1
+    newDataGodseekerMask: 0
+    killedVoidIdol_1: 0
+    killsVoidIdol_1: 1
+    newDataVoidIdol_1: 0
+    killedVoidIdol_2: 0
+    killsVoidIdol_2: 1
+    newDataVoidIdol_2: 0
+    killedVoidIdol_3: 0
+    killsVoidIdol_3: 1
+    newDataVoidIdol_3: 0
+    grubsCollected: 0
+    grubRewards: 0
+    finalGrubRewardCollected: 0
+    fatGrubKing: 0
+    falseKnightDefeated: 0
+    falseKnightDreamDefeated: 0
+    falseKnightOrbsCollected: 0
+    mawlekDefeated: 0
+    giantBuzzerDefeated: 0
+    giantFlyDefeated: 0
+    blocker1Defeated: 0
+    blocker2Defeated: 0
+    hornet1Defeated: 0
+    collectorDefeated: 0
+    hornetOutskirtsDefeated: 0
+    mageLordDreamDefeated: 0
+    mageLordOrbsCollected: 0
+    infectedKnightDreamDefeated: 0
+    infectedKnightOrbsCollected: 0
+    whiteDefenderDefeated: 0
+    whiteDefenderOrbsCollected: 0
+    whiteDefenderDefeats: 0
+    greyPrinceDefeats: 0
+    greyPrinceDefeated: 0
+    greyPrinceOrbsCollected: 0
+    aladarSlugDefeated: 0
+    xeroDefeated: 0
+    elderHuDefeated: 0
+    mumCaterpillarDefeated: 0
+    noEyesDefeated: 0
+    markothDefeated: 0
+    galienDefeated: 0
+    XERO_encountered: 0
+    ALADAR_encountered: 0
+    HU_encountered: 0
+    MUMCAT_encountered: 0
+    NOEYES_encountered: 0
+    MARKOTH_encountered: 0
+    GALIEN_encountered: 0
+    xeroPinned: 0
+    aladarPinned: 0
+    huPinned: 0
+    mumCaterpillarPinned: 0
+    noEyesPinned: 0
+    markothPinned: 0
+    galienPinned: 0
+    currentInvPane: 0
+    showGeoUI: 0
+    showHealthUI: 0
+    promptFocus: 0
+    seenFocusTablet: 0
+    seenDreamNailPrompt: 0
+    isFirstGame: 1
+    enteredTutorialFirstTime: 0
+    isInvincible: 0
+    infiniteAirJump: 0
+    invinciTest: 0
+    currentArea: 0
+    visitedDirtmouth: 0
+    visitedCrossroads: 0
+    visitedGreenpath: 0
+    visitedFungus: 0
+    visitedHive: 0
+    visitedCrossroadsInfected: 0
+    visitedRuins: 0
+    visitedMines: 0
+    visitedRoyalGardens: 0
+    visitedFogCanyon: 0
+    visitedDeepnest: 0
+    visitedRestingGrounds: 0
+    visitedWaterways: 0
+    visitedAbyss: 0
+    visitedOutskirts: 0
+    visitedWhitePalace: 0
+    visitedCliffs: 0
+    visitedAbyssLower: 0
+    visitedGodhome: 0
+    visitedMines10: 0
+    scenesVisited: []
+    scenesMapped:
+    - Cinematic_Stag_travel
+    - Room_Town_Stag_Station
+    - Room_Charm_Shop
+    - Room_Mender_House
+    - Room_mapper
+    - Room_nailmaster
+    - Room_nailmaster_02
+    - Room_nailmaster_03
+    - Room_shop
+    - Room_nailsmith
+    - Room_temple
+    - Room_ruinhouse
+    - Room_Mansion
+    - Room_Tram
+    - Room_Tram_RG
+    - Room_Bretta
+    - Room_Fungus_Shaman
+    - Room_Ouiji
+    - Room_Jinn
+    - Room_Colosseum_01
+    - Room_Colosseum_02
+    - Room_Colosseum_03
+    - Room_Colosseum_Bronze
+    - Room_Colosseum_Silver
+    - Room_Colosseum_Gold
+    - Room_Slug_Shrine
+    - Crossroads_ShamanTemple
+    - Ruins_House_01
+    - Ruins_House_02
+    - Ruins_House_03
+    - Fungus1_35
+    - Fungus1_36
+    - Fungus3_archive
+    - Fungus3_archive_02
+    - Cliffs_03
+    - RestingGrounds_07
+    - Deepnest_45_v02
+    - Deepnest_Spider_Town
+    - Room_spider_small
+    - Room_Wyrm
+    - Abyss_Lighthouse_room
+    - Room_Queen
+    - White_Palace_01
+    - White_Palace_02
+    - White_Palace_03_hub
+    - White_Palace_04
+    - White_Palace_05
+    - White_Palace_06
+    - White_Palace_07
+    - White_Palace_08
+    - White_Palace_09
+    - White_Palace_11
+    - White_Palace_12
+    - White_Palace_13
+    - White_Palace_14
+    - White_Palace_15
+    - White_Palace_16
+    - Dream_Nailcollection
+    - Dream_01_False_Knight
+    - Dream_03_Infected_Knight
+    - Dream_02_Mage_Lord
+    - Dream_Guardian
+    - Dream_Guardian_Hegemol
+    - Dream_Guardian_Lurien
+    - Dream_Guardian_Monomon
+    - Cutscene_Boss_Door
+    - Dream_Backer_Shrine
+    - Dream_Room_Believer_Shrine
+    - Dream_Abyss
+    - Dream_Final_Boss
+    - Room_Final_Boss_Atrium
+    - Room_Final_Boss_Core
+    - Cinematic_Ending_A
+    - Cinematic_Ending_B
+    - Cinematic_Ending_C
+    - Cinematic_Ending_D
+    - Cinematic_Ending_E
+    - End_Credits
+    - Cinematic_MrMushroom
+    - End_Game_Completion
+    - PermaDeath
+    - PermaDeath_Unlock
+    - Deepnest_East_17
+    scenesEncounteredBench: []
+    scenesGrubRescued: []
+    scenesFlameCollected: []
+    scenesEncounteredCocoon: []
+    scenesEncounteredDreamPlant: []
+    scenesEncounteredDreamPlantC: []
+    hasMap: 0
+    mapAllRooms: 0
+    atMapPrompt: 0
+    mapDirtmouth: 1
+    mapCrossroads: 0
+    mapGreenpath: 0
+    mapFogCanyon: 0
+    mapRoyalGardens: 0
+    mapFungalWastes: 0
+    mapCity: 0
+    mapWaterways: 0
+    mapMines: 0
+    mapDeepnest: 0
+    mapCliffs: 0
+    mapOutskirts: 0
+    mapRestingGrounds: 0
+    mapAbyss: 0
+    hasPin: 0
+    hasPinBench: 0
+    hasPinCocoon: 0
+    hasPinDreamPlant: 0
+    hasPinGuardian: 0
+    hasPinBlackEgg: 0
+    hasPinShop: 0
+    hasPinSpa: 0
+    hasPinStag: 0
+    hasPinTram: 0
+    hasPinGhost: 0
+    hasPinGrub: 0
+    hasMarker: 0
+    hasMarker_r: 0
+    hasMarker_b: 0
+    hasMarker_y: 0
+    hasMarker_w: 0
+    spareMarkers_r: 6
+    spareMarkers_b: 6
+    spareMarkers_y: 6
+    spareMarkers_w: 6
+    placedMarkers_r: []
+    placedMarkers_b: []
+    placedMarkers_y: []
+    placedMarkers_w: []
+    environmentType: 0
+    environmentTypeDefault: 0
+    previousDarkness: 0
+    openedTramLower: 0
+    openedTramRestingGrounds: 0
+    tramLowerPosition: 0
+    tramRestingGroundsPosition: 0
+    mineLiftOpened: 0
+    menderDoorOpened: 0
+    vesselFragStagNest: 0
+    shamanPillar: 0
+    crossroadsMawlekWall: 0
+    eggTempleVisited: 0
+    crossroadsInfected: 0
+    falseKnightFirstPlop: 0
+    falseKnightWallRepaired: 0
+    falseKnightWallBroken: 0
+    falseKnightGhostDeparted: 0
+    spaBugsEncountered: 0
+    hornheadVinePlat: 0
+    infectedKnightEncountered: 0
+    megaMossChargerEncountered: 0
+    megaMossChargerDefeated: 0
+    dreamerScene1: 0
+    slugEncounterComplete: 0
+    defeatedDoubleBlockers: 0
+    oneWayArchive: 0
+    defeatedMegaJelly: 0
+    summonedMonomon: 0
+    sawWoundedQuirrel: 0
+    encounteredMegaJelly: 0
+    defeatedMantisLords: 0
+    encounteredGatekeeper: 0
+    deepnestWall: 0
+    queensStationNonDisplay: 0
+    cityBridge1: 0
+    cityBridge2: 0
+    cityLift1: 0
+    cityLift1_isUp: 0
+    liftArrival: 0
+    openedMageDoor: 0
+    openedMageDoor_v2: 0
+    brokenMageWindow: 0
+    brokenMageWindowGlass: 0
+    mageLordEncountered: 0
+    mageLordEncountered_2: 0
+    mageLordDefeated: 0
+    ruins1_5_tripleDoor: 0
+    openedCityGate: 0
+    cityGateClosed: 0
+    bathHouseOpened: 0
+    bathHouseWall: 0
+    cityLift2: 1
+    cityLift2_isUp: 0
+    city2_sewerDoor: 0
+    openedLoveDoor: 0
+    watcherChandelier: 0
+    completedQuakeArea: 0
+    kingsStationNonDisplay: 0
+    tollBenchCity: 0
+    waterwaysGate: 0
+    defeatedDungDefender: 0
+    dungDefenderEncounterReady: 0
+    flukeMotherEncountered: 0
+    flukeMotherDefeated: 0
+    openedWaterwaysManhole: 0
+    waterwaysAcidDrained: 0
+    dungDefenderWallBroken: 0
+    dungDefenderSleeping: 0
+    defeatedMegaBeamMiner: 0
+    defeatedMegaBeamMiner2: 0
+    brokeMinersWall: 0
+    encounteredMimicSpider: 0
+    steppedBeyondBridge: 0
+    deepnestBridgeCollapsed: 0
+    spiderCapture: 0
+    deepnest26b_switch: 0
+    openedRestingGrounds02: 0
+    restingGroundsCryptWall: 0
+    dreamNailConvo: 0
+    gladeGhostsKilled: 0
+    openedGardensStagStation: 0
+    extendedGramophone: 0
+    tollBenchQueensGardens: 0
+    blizzardEnded: 0
+    encounteredHornet: 0
+    savedByHornet: 0
+    outskirtsWall: 0
+    abyssGateOpened: 0
+    abyssLighthouse: 0
+    blueVineDoor: 0
+    gotShadeCharm: 0
+    tollBenchAbyss: 0
+    fountainGeo: 0
+    fountainVesselSummoned: 0
+    openedBlackEggPath: 0
+    enteredDreamWorld: 0
+    duskKnightDefeated: 0
+    whitePalaceOrb_1: 0
+    whitePalaceOrb_2: 0
+    whitePalaceOrb_3: 0
+    whitePalace05_lever: 0
+    whitePalaceMidWarp: 0
+    whitePalaceSecretRoomVisited: 0
+    tramOpenedDeepnest: 0
+    tramOpenedCrossroads: 0
+    openedBlackEggDoor: 0
+    unchainedHollowKnight: 0
+    flamesCollected: 0
+    flamesRequired: 3
+    nightmareLanternAppeared: 0
+    nightmareLanternLit: 0
+    troupeInTown: 0
+    divineInTown: 0
+    grimmChildLevel: 1
+    elderbugConvoGrimm: 0
+    slyConvoGrimm: 0
+    iseldaConvoGrimm: 0
+    midwifeWeaverlingConvo: 0
+    metGrimm: 0
+    foughtGrimm: 0
+    metBrum: 0
+    defeatedNightmareGrimm: 0
+    grimmchildAwoken: 0
+    gotBrummsFlame: 0
+    brummBrokeBrazier: 0
+    destroyedNightmareLantern: 0
+    gotGrimmNotch: 0
+    nymmInTown: 0
+    nymmSpoken: 0
+    nymmCharmConvo: 0
+    nymmFinalConvo: 0
+    elderbugNymmConvo: 0
+    slyNymmConvo: 0
+    iseldaNymmConvo: 0
+    nymmMissedEggOpen: 0
+    elderbugTroupeLeftConvo: 0
+    elderbugBrettaLeft: 0
+    jijiGrimmConvo: 0
+    metDivine: 0
+    divineFinalConvo: 0
+    gaveFragileHeart: 0
+    gaveFragileGreed: 0
+    gaveFragileStrength: 0
+    divineEatenConvos: 0
+    pooedFragileHeart: 0
+    pooedFragileGreed: 0
+    pooedFragileStrength: 0
+    completionPercentage: 0
+    disablePause: 0
+    backerCredits: 0
+    unlockedCompletionRate: 0
+    mapKeyPref: 0
+    playerStory: []
+    playerStoryOutput: 
+    betaEnd: 0
+    newDatTraitorLord: 0
+    bossReturnEntryGate: 
+    bossDoorStateTier1:
+      canUnlock: 0
+      unlocked: 0
+      completed: 0
+      allBindings: 0
+      noHits: 0
+      boundNail: 0
+      boundShell: 0
+      boundCharms: 0
+      boundSoul: 0
+      viewedBossSceneCompletions: []
+    bossDoorStateTier2:
+      canUnlock: 0
+      unlocked: 0
+      completed: 0
+      allBindings: 0
+      noHits: 0
+      boundNail: 0
+      boundShell: 0
+      boundCharms: 0
+      boundSoul: 0
+      viewedBossSceneCompletions: []
+    bossDoorStateTier3:
+      canUnlock: 0
+      unlocked: 0
+      completed: 0
+      allBindings: 0
+      noHits: 0
+      boundNail: 0
+      boundShell: 0
+      boundCharms: 0
+      boundSoul: 0
+      viewedBossSceneCompletions: []
+    bossDoorStateTier4:
+      canUnlock: 0
+      unlocked: 0
+      completed: 0
+      allBindings: 0
+      noHits: 0
+      boundNail: 0
+      boundShell: 0
+      boundCharms: 0
+      boundSoul: 0
+      viewedBossSceneCompletions: []
+    bossDoorStateTier5:
+      canUnlock: 0
+      unlocked: 0
+      completed: 0
+      allBindings: 0
+      noHits: 0
+      boundNail: 0
+      boundShell: 0
+      boundCharms: 0
+      boundSoul: 0
+      viewedBossSceneCompletions: []
+    bossStatueTargetLevel: -1
+    currentBossStatueCompletionKey: 
+    statueStateGruzMother:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateVengefly:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateBroodingMawlek:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateFalseKnight:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateFailedChampion:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateHornet1:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateHornet2:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateMegaMossCharger:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateMantisLords:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateOblobbles:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateGreyPrince:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateBrokenVessel:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateLostKin:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateNosk:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateFlukemarm:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateCollector:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateWatcherKnights:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateSoulMaster:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateSoulTyrant:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateGodTamer:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateCrystalGuardian1:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateCrystalGuardian2:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateUumuu:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateDungDefender:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateWhiteDefender:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateHiveKnight:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateTraitorLord:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateGrimm:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateNightmareGrimm:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateHollowKnight:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateElderHu:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateGalien:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateMarkoth:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateMarmu:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateNoEyes:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateXero:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateGorb:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateRadiance:
+      hasBeenSeen: 1
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateSly:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateNailmasters:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateMageKnight:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStatePaintmaster:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateZote:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateNoskHornet:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    statueStateMantisLordsExtra:
+      hasBeenSeen: 0
+      isUnlocked: 0
+      completedTier1: 0
+      completedTier2: 0
+      completedTier3: 0
+      seenTier3Unlock: 0
+      usingAltVersion: 0
+    godseekerUnlocked: 0
+    currentBossSequence:
+      bindings: 0
+      timer: 0
+      knightDamaged: 0
+      playerData: 
+      previousCompletion:
+        canUnlock: 0
+        unlocked: 0
+        completed: 0
+        allBindings: 0
+        noHits: 0
+        boundNail: 0
+        boundShell: 0
+        boundCharms: 0
+        boundSoul: 0
+        viewedBossSceneCompletions: []
+      previousEquippedCharms: 
+      wasOvercharmed: 0
+      bossSequenceName: 
+    bossRushMode: 0
+    bossDoorCageUnlocked: 0
+    blueRoomDoorUnlocked: 0
+    blueRoomActivated: 0
+    finalBossDoorUnlocked: 0
+    hasGodfinder: 0
+    unlockedNewBossStatue: 1
+    scaredFlukeHermitEncountered: 0
+    scaredFlukeHermitReturned: 0
+    enteredGGAtrium: 0
+    extraFlowerAppear: 0
+    givenGodseekerFlower: 0
+    givenOroFlower: 0
+    givenWhiteLadyFlower: 0
+    givenEmilitiaFlower: 0
+    unlockedBossScenes: []
+    queuedGodfinderIcon: 0
+    godseekerSpokenAwake: 0
+    nailsmithCorpseAppeared: 0
+    godseekerWaterwaysSeenState: -1
+    godseekerWaterwaysSpoken1: 0
+    godseekerWaterwaysSpoken2: 0
+    godseekerWaterwaysSpoken3: 0
+    bossDoorEntranceTextSeen: -1
+    seenDoor4Finale: 0
+    zoteStatueWallBroken: 0
+    seenGGWastes: 0
+    ordealAchieved: 0
+  sceneData:
+    geoRocks: []
+    persistentBoolItems: []
+    persistentIntItems: []
+  profileID: 0
+  startedOnThisScene: 1
+  actorSnapshotUnpaused: {fileID: 0}
+  actorSnapshotPaused: {fileID: 0}
+  silentSnapshot: {fileID: 0}
+  noMusicSnapshot: {fileID: 0}
+  noMusicCue: {fileID: 0}
+  noAtmosSnapshot: {fileID: 0}
+  worldInfo: {fileID: 0}
+  standaloneLoadingSpinnerPrefab: {fileID: 0}
+--- !u!114 &-7120269472078119809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168011083639140517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cfca9a464ac5514a9aeec5927ea3253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastActiveController: 0
+  lastInputDeviceStyle: 0
+  activeGamepadType: 0
+  gamepadState: 0
+  inputX: 0
+  inputY: 0
+  acceptingInput: 0
+  skippingCutscene: 0
+--- !u!114 &8866039371794277594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168011083639140517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ed54bf281133f4eb73815dca881085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7561658691597372596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168011083639140517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf4ec57286dca479dfd038ab467989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6036121174791278336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168011083639140517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1384774831, guid: e743331561ef77147ae48cda9bcb8209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fsm:
+    dataVersion: 2
+    usedInTemplate: {fileID: 0}
+    name: Globalise
+    startState: Init
+    states:
+    - name: Init
+      description: 
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 59
+        y: 121
+        width: 120
+        height: 32
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions:
+      - fsmEvent:
+          name: FINISHED
+          isSystemEvent: 1
+          isGlobal: 0
+        toState: Set
+        linkStyle: 0
+        linkConstraint: 0
+        linkTarget: 0
+        colorIndex: 0
+      actionData:
+        actionNames:
+        - HutongGames.PlayMaker.Actions.GetOwner
+        - HutongGames.PlayMaker.Actions.SetGameObject
+        customNames:
+        - 
+        - 
+        actionEnabled: 0101
+        actionIsOpen: 0101
+        actionStartIndex: 0000000001000000
+        actionHashCodes: 5c0045054d51cf04
+        unityObjectParams: []
+        fsmGameObjectParams:
+        - useVariable: 1
+          name: Self
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        - useVariable: 1
+          name: GameManager
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        - useVariable: 1
+          name: Self
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams: []
+        byteData: 00
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 13000000130000001300000001000000
+        paramName:
+        - storeGameObject
+        - variable
+        - gameObject
+        - everyFrame
+        paramDataPos: 00000000010000000200000000000000
+        paramByteDataSize: 00000000000000000000000001000000
+    - name: Set
+      description: 
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 100
+        height: 16
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions: []
+      actionData:
+        actionNames: []
+        customNames: []
+        actionEnabled: 
+        actionIsOpen: 
+        actionStartIndex: 
+        actionHashCodes: 
+        unityObjectParams: []
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams: []
+        byteData: 
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 
+        paramName: []
+        paramDataPos: 
+        paramByteDataSize: 
+    events:
+    - name: LEVEL LOADED
+      isSystemEvent: 1
+      isGlobal: 0
+    - name: FINISHED
+      isSystemEvent: 1
+      isGlobal: 0
+    globalTransitions:
+    - fsmEvent:
+        name: LEVEL LOADED
+        isSystemEvent: 1
+        isGlobal: 0
+      toState: Init
+      linkStyle: 0
+      linkConstraint: 0
+      linkTarget: 0
+      colorIndex: 0
+    variables:
+      floatVariables: []
+      intVariables: []
+      boolVariables: []
+      stringVariables: []
+      vector2Variables: []
+      vector3Variables: []
+      colorVariables: []
+      rectVariables: []
+      quaternionVariables: []
+      gameObjectVariables:
+      - useVariable: 1
+        name: Self
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: {fileID: 0}
+      objectVariables: []
+      materialVariables: []
+      textureVariables: []
+      arrayVariables: []
+      enumVariables: []
+      categories:
+      - 
+      variableCategoryIDs: 00000000
+    description: 
+    docUrl: 
+    showStateLabel: 0
+    maxLoopCount: 0
+    watermark: 
+    password: 
+    locked: 0
+    manualUpdate: 0
+    outVariableIndices: 
+    keepDelayedEventsOnStateExit: 0
+    preprocessed: 0
+    ExposedEvents: []
+    OutputEvents: []
+    RestartOnEnable: 1
+    ResetVariablesOnEnable: 0
+    EnableDebugFlow: 0
+    EnableBreakpoints: 1
+    editorFlags: 225
+    activeStateName: 
+    mouseEvents: 0
+    handleLevelLoaded: 0
+    handleTriggerEnter2D: 0
+    handleTriggerExit2D: 0
+    handleTriggerStay2D: 0
+    handleCollisionEnter2D: 0
+    handleCollisionExit2D: 0
+    handleCollisionStay2D: 0
+    handleTriggerEnter: 0
+    handleTriggerExit: 0
+    handleTriggerStay: 0
+    handleCollisionEnter: 0
+    handleCollisionExit: 0
+    handleCollisionStay: 0
+    handleParticleCollision: 0
+    handleControllerColliderHit: 0
+    handleJointBreak: 0
+    handleJointBreak2D: 0
+    handleOnGUI: 0
+    handleFixedUpdate: 0
+    handleLateUpdate: 0
+    handleApplicationEvents: 0
+    handleUiEvents: 0
+    handleLegacyNetworking: 0
+    handleAnimatorMove: 0
+    handleAnimatorIK: 0
+  fsmTemplate: {fileID: 0}
+  eventHandlerComponentsAdded: 0
+--- !u!114 &4053375563945789011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168011083639140517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df4e566456f26e347bcef8c851e130ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievementsListPrefab: {fileID: 6607649361877316588, guid: 4a7201c4c5aaa84418cce1d633b4e98b, type: 3}
+  hiddenAchievementIcon: {fileID: 0}
+--- !u!1 &8757377934010900837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8772410289506478980}
+  m_Layer: 0
+  m_Name: GlobalPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8772410289506478980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8757377934010900837}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4936104497058031664}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

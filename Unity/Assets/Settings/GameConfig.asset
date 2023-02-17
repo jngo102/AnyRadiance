@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023c26920bad9d8449ef7e07d1e89923, type: 3}
+  m_Name: GameConfig
+  m_EditorClassIdentifier: 
+  showTargetSceneNamesOnGates: 1
+  enableDebugButtons: 1
+  enableCheats: 1
+  disableSaveGame: 0
+  useSaveEncryption: 0
+  steamEnabled: 1
+  galaxyEnabled: 0
+  clearRecordsOnStart: 0
+  unlockPermadeathMode: 1
+  unlockBossRushMode: 1
+  clearPreferredLanguageSetting: 0
+  unlockAllMenuStyles: 1
+  hideExtrasMenu: 0
+  hideKeyboardMenu: 0
+  hideLanguageOption: 0
+  nativeAchievementsSettingAlwaysOn: 0
+  hideVsyncSetting: 0
+  enableTFRSetting: 0
+  hideMonitorSetting: 0

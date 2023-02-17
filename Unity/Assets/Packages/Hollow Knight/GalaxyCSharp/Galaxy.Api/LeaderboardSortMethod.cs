@@ -1,0 +1,10 @@
+namespace Galaxy.Api
+{
+	
+	public enum LeaderboardSortMethod
+	{
+		LEADERBOARD_SORT_METHOD_NONE,
+		LEADERBOARD_SORT_METHOD_ASCENDING,
+		LEADERBOARD_SORT_METHOD_DESCENDING
+	}
+}

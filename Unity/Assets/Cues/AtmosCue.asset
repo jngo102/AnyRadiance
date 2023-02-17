@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bcb272b718404043b1025391a1e3cdf, type: 3}
+  m_Name: AtmosCue
+  m_EditorClassIdentifier: 
+  snapshot: {fileID: -610059871232592837, guid: b6f43de71b7fd594fbc43905b047691f, type: 2}
+  isChannelEnabled: 01

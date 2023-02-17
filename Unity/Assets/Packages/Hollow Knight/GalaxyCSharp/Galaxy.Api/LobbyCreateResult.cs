@@ -1,0 +1,10 @@
+namespace Galaxy.Api
+{
+	
+	public enum LobbyCreateResult
+	{
+		LOBBY_CREATE_RESULT_SUCCESS,
+		LOBBY_CREATE_RESULT_ERROR,
+		LOBBY_CREATE_RESULT_CONNECTION_FAILURE
+	}
+}

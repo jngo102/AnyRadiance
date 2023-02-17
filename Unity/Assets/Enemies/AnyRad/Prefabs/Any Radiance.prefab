@@ -1,0 +1,403 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7214443727031328494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 952812096952178300}
+  - component: {fileID: 7214443727031328490}
+  - component: {fileID: 7214443727031328489}
+  - component: {fileID: 7214443727031328488}
+  - component: {fileID: 7214443727031328495}
+  - component: {fileID: 1630361015282303370}
+  - component: {fileID: 388970638517907937}
+  - component: {fileID: 6830941276190198417}
+  - component: {fileID: 6940294985519280975}
+  - component: {fileID: 8490686500462671403}
+  - component: {fileID: 2451035973518508576}
+  - component: {fileID: -625742399966493338}
+  m_Layer: 0
+  m_Name: Any Radiance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &952812096952178300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214443727031328494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &7214443727031328490
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214443727031328494}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 70ead1f096a09124da1746d74e2a55f1, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &7214443727031328489
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214443727031328494}
+  m_Mesh: {fileID: 0}
+--- !u!114 &7214443727031328488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214443727031328494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fac570381f34f647b768dc5a5aa1364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collection: {fileID: 1278739052698992617, guid: bfe04b97b2f08584c8f07e89a8986126, type: 3}
+  _color: {r: 1, g: 1, b: 1, a: 1}
+  _scale: {x: 1, y: 1, z: 1}
+  _spriteId: 83
+  boxCollider2D: {fileID: 0}
+  polygonCollider2D: []
+  edgeCollider2D: []
+  boxCollider: {fileID: 0}
+  meshCollider: {fileID: 0}
+  meshColliderPositions: []
+  meshColliderMesh: {fileID: 0}
+  renderLayer: 0
+--- !u!114 &7214443727031328495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214443727031328494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e54113e5604435b8ae87c7754f2725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  library: {fileID: 8775157250121766125, guid: ffc2ef15bbca4e2458ab60d30e105fea, type: 3}
+  defaultClipId: 1
+  playAutomatically: 0
+--- !u!61 &1630361015282303370
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214443727031328494}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.051847756, y: 0.519657}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.415954, y: 3.594456}
+  m_EdgeRadius: 0
+--- !u!114 &388970638517907937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214443727031328494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a0a01cad4a8924ca7a1d9dbc27f6b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPlayerPrefab: {fileID: 0}
+  regularInvincibleAudio:
+    Clip: {fileID: 0}
+    PitchMin: 0
+    PitchMax: 0
+    Volume: 0
+  blockHitPrefab: {fileID: 0}
+  strikeNailPrefab: {fileID: 0}
+  slashImpactPrefab: {fileID: 0}
+  fireballHitPrefab: {fileID: 0}
+  sharpShadowImpactPrefab: {fileID: 0}
+  corpseSplatPrefab: {fileID: 0}
+  enemyDeathSwordAudio:
+    Clip: {fileID: 0}
+    PitchMin: 0
+    PitchMax: 0
+    Volume: 0
+  enemyDamageAudio:
+    Clip: {fileID: 0}
+    PitchMin: 0
+    PitchMax: 0
+    Volume: 0
+  smallGeoPrefab: {fileID: 0}
+  mediumGeoPrefab: {fileID: 0}
+  largeGeoPrefab: {fileID: 0}
+  hp: 0
+  enemyType: 0
+  effectOrigin: {x: 0, y: 0, z: 0}
+  ignoreKillAll: 0
+  hpScale:
+    level1: 0
+    level2: 0
+    level3: 0
+  battleScene: {fileID: 0}
+  sendHitTo: {fileID: 0}
+  sendKilledToObject: {fileID: 0}
+  sendKilledToName: 
+  smallGeoDrops: 0
+  mediumGeoDrops: 0
+  largeGeoDrops: 0
+  megaFlingGeo: 0
+  hasAlternateHitAnimation: 0
+  alternateHitAnimation: 
+  invincible: 0
+  invincibleFromDirection: 0
+  preventInvincibleEffect: 0
+  hasAlternateInvincibleSound: 0
+  alternateInvincibleSound: {fileID: 0}
+  deathAudioSnapshot: {fileID: 0}
+  hasSpecialDeath: 0
+  deathReset: 0
+  damageOverride: 0
+  ignoreAcid: 0
+  showGodfinderIcon: 0
+  showGodFinderDelay: 7
+  unlockBossScene: {fileID: 0}
+  ignoreHazards: 0
+  ignoreWater: 0
+  invulnerableTime: 0
+  semiPersistent: 0
+  isDead: 0
+--- !u!114 &6830941276190198417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214443727031328494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7985fe117d4aa4d9c10a87b191f0eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  corpsePrefab: {fileID: 0}
+  corpseFacesRight: 0
+  corpseFlingSpeed: 0
+  corpseSpawnPoint: {x: 0, y: 0, z: 0}
+  deathBroadcastEvent: 
+  effectOrigin: {x: 0, y: 0, z: 0}
+  lowCorpseArc: 0
+  playerDataName: 
+  recycle: 0
+  rotateCorpse: 0
+  audioSnapshotOnDeath: {fileID: 0}
+  journalUpdateMessagePrefab: {fileID: 0}
+  enemyDeathType: 0
+  audioPlayerPrefab: {fileID: 0}
+  enemyDeathSwordAudio:
+    Clip: {fileID: 0}
+    PitchMin: 0
+    PitchMax: 0
+    Volume: 0
+  enemyDamageAudio:
+    Clip: {fileID: 0}
+    PitchMin: 0
+    PitchMax: 0
+    Volume: 0
+  enemyDeathSwordClip: {fileID: 0}
+  enemyDamageClip: {fileID: 0}
+  deathWaveInfectedPrefab: {fileID: 0}
+  deathWaveInfectedSmallPrefab: {fileID: 0}
+  spatterOrangePrefab: {fileID: 0}
+  deathPuffMedPrefab: {fileID: 0}
+  deathPuffLargePrefab: {fileID: 0}
+  dreamEssenceCorpseGetPrefab: {fileID: 0}
+  doKillFreeze: 1
+  uninfectedDeathPt: {fileID: 0}
+  slashEffectGhost1: {fileID: 0}
+  slashEffectGhost2: {fileID: 0}
+  whiteWave: {fileID: 0}
+--- !u!114 &6940294985519280975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214443727031328494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79a2366e82555e43b1507732af3c5af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8490686500462671403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214443727031328494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b622770e199e149859032bc03c2021, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  convoAmount: 8
+  convoTitle: GENERIC
+  startSuppressed: 0
+  noSoul: 0
+  dreamImpactPrefab: {fileID: 0}
+  allowUseChildColliders: 0
+--- !u!114 &2451035973518508576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214443727031328494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a0a01cad4a8924ca7a1d9dbc27f6b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPlayerPrefab: {fileID: 0}
+  regularInvincibleAudio:
+    Clip: {fileID: 0}
+    PitchMin: 0
+    PitchMax: 0
+    Volume: 0
+  blockHitPrefab: {fileID: 0}
+  strikeNailPrefab: {fileID: 0}
+  slashImpactPrefab: {fileID: 0}
+  fireballHitPrefab: {fileID: 0}
+  sharpShadowImpactPrefab: {fileID: 0}
+  corpseSplatPrefab: {fileID: 0}
+  enemyDeathSwordAudio:
+    Clip: {fileID: 0}
+    PitchMin: 0
+    PitchMax: 0
+    Volume: 0
+  enemyDamageAudio:
+    Clip: {fileID: 0}
+    PitchMin: 0
+    PitchMax: 0
+    Volume: 0
+  smallGeoPrefab: {fileID: 0}
+  mediumGeoPrefab: {fileID: 0}
+  largeGeoPrefab: {fileID: 0}
+  hp: 3000
+  enemyType: 0
+  effectOrigin: {x: 0, y: 0, z: 0}
+  ignoreKillAll: 0
+  hpScale:
+    level1: 0
+    level2: 0
+    level3: 0
+  battleScene: {fileID: 0}
+  sendHitTo: {fileID: 0}
+  sendKilledToObject: {fileID: 0}
+  sendKilledToName: 
+  smallGeoDrops: 0
+  mediumGeoDrops: 0
+  largeGeoDrops: 0
+  megaFlingGeo: 0
+  hasAlternateHitAnimation: 0
+  alternateHitAnimation: 
+  invincible: 0
+  invincibleFromDirection: 0
+  preventInvincibleEffect: 0
+  hasAlternateInvincibleSound: 0
+  alternateInvincibleSound: {fileID: 0}
+  deathAudioSnapshot: {fileID: 0}
+  hasSpecialDeath: 0
+  deathReset: 0
+  damageOverride: 0
+  ignoreAcid: 0
+  showGodfinderIcon: 0
+  showGodFinderDelay: 7
+  unlockBossScene: {fileID: 0}
+  ignoreHazards: 0
+  ignoreWater: 0
+  invulnerableTime: 0
+  semiPersistent: 0
+  isDead: 0
+--- !u!50 &-625742399966493338
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214443727031328494}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
