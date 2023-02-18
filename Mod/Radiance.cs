@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using GlobalEnums;
 using Modding;
+using Modding.Utils;
 using UnityEngine;
 using Vasi;
 
@@ -75,7 +76,7 @@ namespace AnyRadiance
 
             GetChildren();
 
-            On.HeroController.CanDash += AlwaysEnableDash;
+            HeroController.instance.gameObject.GetOrAddComponent<Knight>();
         }
 
         private IEnumerator Start()
@@ -95,16 +96,8 @@ namespace AnyRadiance
             ReflectionHelper.SetField<FsmStateAction, bool>(quake1Down, "enabled", true);
             ReflectionHelper.SetField<FsmStateAction, bool>(quake2Down, "enabled", true);
 
-            On.HeroController.CanDash -= AlwaysEnableDash;
-        }
-
-        private bool AlwaysEnableDash(On.HeroController.orig_CanDash orig, HeroController self)
-        {
-            if (self.hero_state != ActorStates.no_input && ReflectionHelper.GetField<HeroController, float>(self, "dashCooldownTimer") <= 0)
-            {
-                return true;
-            }
-            return false;
+            var knight = HeroController.instance.gameObject.GetComponent<Knight>();
+            if (knight != null) Destroy(knight);
         }
 
         private void GetChildren()

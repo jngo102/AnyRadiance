@@ -10,8 +10,8 @@ namespace AnyRadiance
         private const float FollowTime = 2.0f / 3;
         private const float MinScale = 0.5f;
 
-        public float TrackingAcceleration = 1;
-        public float MaxTrackingSpeed = 10;
+        public float TrackingAcceleration = 1.5f;
+        public float MaxTrackingSpeed = 12;
         public float Scale = 2;
 
         private tk2dSpriteAnimator _animator;
@@ -89,8 +89,8 @@ namespace AnyRadiance
                 var orbComponent = smallerOrb.GetOrAddComponent<MegaOrb>();
                 smallerOrb.transform.localScale = Vector3.one * Scale / 2;
                 orbComponent.Scale = Scale / 2;
-                orbComponent.MaxTrackingSpeed = MaxTrackingSpeed + 3;
-                orbComponent.TrackingAcceleration = TrackingAcceleration * 1.75f;
+                orbComponent.MaxTrackingSpeed = MaxTrackingSpeed + 2;
+                orbComponent.TrackingAcceleration = TrackingAcceleration * 1.5f;
                 orbComponent.Launch();
             }
 

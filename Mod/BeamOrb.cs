@@ -12,9 +12,9 @@ namespace AnyRadiance
 {
     internal class BeamOrb : MonoBehaviour
     {
-        private const float SpinSpeed = 60;
-        private const float TrackingAcceleration = 0.6f;
-        private const float MaxTrackingSpeed = 6;
+        private const float SpinSpeed = 30;
+        private const float TrackingAcceleration = 0.3f;
+        private const float MaxTrackingSpeed = 3;
 
         private int _spinDirection;
 
@@ -72,7 +72,7 @@ namespace AnyRadiance
                 beam.LocateMyFSM("Control").SendEvent("ANTIC");
             }
 
-            StartCoroutine(BeamInterval(2.0f / 3));
+            StartCoroutine(BeamInterval(0.5f));
             StartCoroutine(Dissipate(2));
         }
 
@@ -86,14 +86,14 @@ namespace AnyRadiance
         {
             while (true)
             {
+                yield return new WaitForSeconds(interval);
+                
                 foreach (var beam in _beams)
                 {
                     PlayMakerFSM beamCtrl = beam.LocateMyFSM("Control");
                     beamCtrl.SetState(beamCtrl.ActiveStateName == "Antic" ? "Fire" : "Antic");
                 }
                 if (_beams[0].LocateMyFSM("Control").ActiveStateName == "Fire") Radiance.PlayOneShot(AnyRadiance.Instance.AudioClips["Beam Burst"], transform.position);
-
-                yield return new WaitForSeconds(interval);
             }
         }
 
