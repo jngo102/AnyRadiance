@@ -17,9 +17,10 @@ namespace AnyRadiance
     {
         internal static AnyRadiance Instance { get; private set; }
 
-        public Dictionary<string, AudioClip> AudioClips { get; private set; } = new();
-        public Dictionary<string, AssetBundle> Bundles { get; private set; } = new();
-        public Dictionary<string, GameObject> GameObjects { get; private set; } = new();
+        public Dictionary<string, AudioClip> AudioClips = new();
+        public Dictionary<string, AssetBundle> Bundles = new();
+        public Dictionary<string, GameObject> GameObjects = new();
+        public Dictionary<string, ParticleSystem> Particles = new();
 
         private Dictionary<string, (string, string)> _preloads = new()
         {

@@ -1,7 +1,10 @@
 ﻿using GlobalEnums;
+using HutongGames.PlayMaker;
+using HutongGames.PlayMaker.Actions;
 using Modding;
 using System.Reflection;
 using UnityEngine;
+using Vasi;
 
 namespace AnyRadiance
 {
@@ -11,8 +14,19 @@ namespace AnyRadiance
 
         private float _dashTimer;
 
+        private HeroController _heroController;
+        private Rigidbody2D _rigidbody;
+
         private void Awake()
         {
+            _heroController = HeroController.instance;
+            _rigidbody = GetComponent<Rigidbody2D>();
+
+            PlayMakerFSM spellCtrl = gameObject.LocateMyFSM("Spell Control");
+            FsmState q2Land = spellCtrl.GetState("Q2 Land");
+            q2Land.RemoveAction<SetVelocity2d>();
+            q2Land.InsertMethod(7, () => _heroController.AffectedByGravity(true));
+
             On.HeroController.CanDash += AlwaysEnableDash;
             On.HeroController.LookForInput += CustomInput;
         }
@@ -35,6 +49,12 @@ namespace AnyRadiance
                 _dashTimer = 0;
                 typeof(HeroController).GetMethod("CancelDash", BindingFlags.NonPublic | BindingFlags.Instance)?
                     .Invoke(self, null);
+                if (_dashTimer >= MaxDashTime)
+                {
+                    typeof(HeroController).GetMethod("ResetAttacks", BindingFlags.NonPublic | BindingFlags.Instance)
+                        ?.Invoke(self, null);
+                }
+                _heroController.gameObject.LocateMyFSM("Nail Arts").SendEvent("DASH END");
             }
         }
 
