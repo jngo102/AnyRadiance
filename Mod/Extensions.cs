@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Reflection;
 using UnityEngine;
 
@@ -6,9 +7,10 @@ namespace AnyRadiance
 {
     internal static class Extensions
     {
-        public static bool IsFinished(this tk2dSpriteAnimator animator)
+        public static IEnumerator PlayUntilFinished(this tk2dSpriteAnimator animator, string animName)
         {
-            return animator.CurrentFrame >= animator.CurrentClip.frames.Length - 1;
+            animator.Play(animName);
+            yield return new WaitUntil(() => animator.CurrentFrame >= animator.CurrentClip.frames.Length - 1);
         }
 
         private static T Copy<T>(this T comp, T other) where T : Component

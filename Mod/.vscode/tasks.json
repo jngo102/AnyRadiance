@@ -1,0 +1,34 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "build",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+
+        {
+            "label": "Launch",
+            "type": "shell",
+            "command": "steam",
+            "args": [
+                "steam://rungameid/367520"
+            ],
+            "presentation": {
+                "reveal": "silent"
+            },
+            "dependsOn": "Build",
+        }
+    ]
+}

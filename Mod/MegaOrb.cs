@@ -84,14 +84,13 @@ namespace AnyRadiance
         private IEnumerator Split(float delay)
         {
             yield return new WaitForSeconds(delay);
-            _animator.Play("Orb End");
             _rigidbody.velocity = Vector2.zero;
             _audio.Stop();
             Following = false;
             _particles.Stop();
             if (_scale <= _minScale)
             {
-                yield return new WaitUntil(() => _animator.IsFinished());
+                yield return _animator.PlayUntilFinished("Orb End");
                 Destroy(gameObject);
                 yield break;
             }

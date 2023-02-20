@@ -286,7 +286,7 @@ namespace AnyRadiance
 
             GameObject a2Plats = new GameObject("A2 Plats");
             a2Plats.transform.SetParent(AnyRadiance.Instance.GameObjects["Plat Sets"].transform);
-            var rotator = a2Plats.AddComponent<PlatRotator>();
+            var rotator = a2Plats.AddComponent<PlatformRotator>();
             var platPrefab = AnyRadiance.Instance.GameObjects["Plat Sets"].Child("P2 SetA/Radiant Plat Small (2)");
             for (int i = 0; i < NumPlatsA2; i++)
             {
@@ -302,11 +302,6 @@ namespace AnyRadiance
         }
 
         #region Helpers
-        private IEnumerator AnimPlayUntilFinished(string animName)
-        {
-            _animator.Play(animName);
-            yield return new WaitUntil(() => _animator.IsFinished());
-        }
 
         private void CamShake(string eventName)
         {
@@ -327,7 +322,7 @@ namespace AnyRadiance
             AnyRadiance.Instance.Particles["Feather Burst"].Play();
             CamShake("EnemyKillShake");
             _haloFSM.SendEvent("UP");
-            yield return AnimPlayUntilFinished("Tele In");
+            yield return _animator.PlayUntilFinished("Tele In");
         }
 
         private IEnumerator TeleOut()
@@ -337,7 +332,7 @@ namespace AnyRadiance
             _rigidbody.velocity = Vector2.zero;
             AnyRadiance.Instance.Particles["Tele Out"].Play();
             AnyRadiance.Instance.AudioClips["Tele"].PlayOneShot(transform.position);
-            yield return AnimPlayUntilFinished("Tele Out");
+            yield return _animator.PlayUntilFinished("Tele Out");
             _renderer.enabled = false;
         }
 
@@ -372,7 +367,7 @@ namespace AnyRadiance
             {
                 _animator.Play("Recover");
                 yield return new WaitForSeconds(Random.Range(0.25f, 0.35f));
-                yield return AnimPlayUntilFinished("Cast");
+                yield return _animator.PlayUntilFinished("Cast");
                 yield return ChooseAttackP1();
 
                 yield return TeleOut();
@@ -407,7 +402,7 @@ namespace AnyRadiance
             {
                 _animator.Play("Recover");
                 yield return new WaitForSeconds(Random.Range(0.25f, 0.35f));
-                yield return AnimPlayUntilFinished("Cast");
+                yield return _animator.PlayUntilFinished("Cast");
                 yield return ChooseAttackP2();
 
                 yield return TeleOut();
