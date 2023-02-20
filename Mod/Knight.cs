@@ -5,6 +5,7 @@ using Modding;
 using System.Reflection;
 using UnityEngine;
 using Vasi;
+using InvokeMethod = HutongGames.PlayMaker.Actions.InvokeMethod;
 
 namespace AnyRadiance
 {
@@ -13,19 +14,18 @@ namespace AnyRadiance
         private const float MaxDashTime = 0.35f;
 
         private float _dashTimer;
+        private FsmState _q2Land;
 
         private HeroController _heroController;
-        private Rigidbody2D _rigidbody;
 
         private void Awake()
         {
             _heroController = HeroController.instance;
-            _rigidbody = GetComponent<Rigidbody2D>();
 
             PlayMakerFSM spellCtrl = gameObject.LocateMyFSM("Spell Control");
-            FsmState q2Land = spellCtrl.GetState("Q2 Land");
-            q2Land.RemoveAction<SetVelocity2d>();
-            q2Land.InsertMethod(7, () => _heroController.AffectedByGravity(true));
+            _q2Land = spellCtrl.GetState("Q2 Land");
+            _q2Land.RemoveAction<SetVelocity2d>();
+            _q2Land.InsertMethod(7, () => _heroController.AffectedByGravity(true));
 
             On.HeroController.CanDash += AlwaysEnableDash;
             On.HeroController.LookForInput += CustomInput;
@@ -82,6 +82,9 @@ namespace AnyRadiance
         {
             On.HeroController.CanDash -= AlwaysEnableDash;
             On.HeroController.LookForInput -= CustomInput;
+
+            _q2Land.RemoveAction<InvokeMethod>();
+            _q2Land.InsertAction(7, new SetVelocity2d { x = 0, y = 0 });
         }
     }
 }

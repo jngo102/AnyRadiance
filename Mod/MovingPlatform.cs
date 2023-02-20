@@ -1,44 +1,38 @@
-﻿using UnityEngine;
-using Vasi;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace AnyRadiance
 {
     internal class MovingPlatform : MonoBehaviour
     {
-        private HeroController _heroController;
+        private Rigidbody2D _rigidbody;
+        
         private void Awake()
         {
-            _heroController = HeroController.instance;
+            _rigidbody = gameObject.AddComponent<Rigidbody2D>();
+            _rigidbody.isKinematic = true;
+            _rigidbody.interpolation = RigidbodyInterpolation2D.Interpolate;
+            _rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            _rigidbody.sharedMaterial = new PhysicsMaterial2D { friction = 5 };
         }
         
-
         private void OnCollisionStay2D(Collision2D other)
         {
             if (other.gameObject.name == "Knight")
             {
-                foreach (var contact in other.contacts)
+                if (other.contacts.Any(contact => contact.normal.y < -1))
                 {
-                    if (contact.normal.y < -1)
-                    {
-                        return;
-                    }
+                    return;
                 }
 
-                _heroController.SetConveyorSpeed(GetComponent<Rigidbody2D>().velocity.x);
-                _heroController.SetConveyorSpeedV(GetComponent<Rigidbody2D>().velocity.y);
-                _heroController.SetCState("onConveyor", true);
-                _heroController.SetCState("onConveyorV", true);
-            }
-        }
-
-        private void OnTriggerStay2D(Collider2D other)
-        {
-            if (other.gameObject.name == "Knight")
-            {
-                _heroController.SetConveyorSpeed(GetComponent<Rigidbody2D>().velocity.x);
-                _heroController.SetConveyorSpeedV(GetComponent<Rigidbody2D>().velocity.y);
-                _heroController.SetCState("onConveyor", true);
-                _heroController.SetCState("onConveyorV", true);
+                var heroController = other.gameObject.GetComponent<HeroController>();
+                heroController.SetConveyorSpeed(_rigidbody.velocity.x);
+                heroController.SetConveyorSpeedV(_rigidbody.velocity.y);
+                heroController.cState.onConveyor = heroController.cState.onConveyorV = true;
+                if (heroController.cState.hazardRespawning)
+                {
+                    other.rigidbody.velocity = Vector2.zero;
+                }
             }
         }
 
@@ -46,8 +40,8 @@ namespace AnyRadiance
         {
             if (other.gameObject.name == "Knight")
             {
-                _heroController.SetCState("onConveyor", false);
-                _heroController.SetCState("onConveyorV", false);
+                var cState = other.gameObject.GetComponent<HeroController>().cState;
+                cState.onConveyor = cState.onConveyorV = false;
             }
         }
     }

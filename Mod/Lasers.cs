@@ -9,7 +9,7 @@ namespace AnyRadiance
         private IEnumerator LaserColumns()
         {
             var beams = new List<GameObject>();
-            int safeSpot = Random.Range((int)ArenaInfo.A1Left, (int)ArenaInfo.A1Right);
+            int safeSpot = Random.Range((int)ArenaInfo.CurrentLeft, (int)ArenaInfo.CurrentRight);
             for (int x = 20; x < 100; x += 1)
             {
                 if (x == safeSpot) continue;
@@ -18,8 +18,8 @@ namespace AnyRadiance
                 beam.LocateMyFSM("Control").SendEvent("ANTIC");
                 beams.Add(beam);
             }
-            
-            PlayOneShot(AnyRadiance.Instance.AudioClips["Beam Prepare"], transform.position);
+
+            AnyRadiance.Instance.AudioClips["Beam Prepare"].PlayOneShot(transform.position);
 
             float dist = Mathf.Abs(_hc.transform.position.x - safeSpot);
             float runSpeed = _hc.RUN_SPEED;
@@ -66,9 +66,9 @@ namespace AnyRadiance
                 beam.LocateMyFSM("Control").SendEvent("FIRE");
             }
 
-            PlayOneShot(AnyRadiance.Instance.AudioClips["Beam Burst"], transform.position);
+            AnyRadiance.Instance.AudioClips["Beam Burst"].PlayOneShot(transform.position);
 
-            yield return new WaitForSeconds(0.5F);
+            yield return new WaitForSeconds(0.5f);
 
             foreach (var beam in beams)
             {

@@ -23,8 +23,8 @@ namespace AnyRadiance
         public Dictionary<string, ParticleSystem> Particles = new();
 
         private Dictionary<string, (string, string)> _preloads = new()
-        {
-            // ["Boss Scene Controller"] = ("GG_Gruz_Mother", "Boss Scene Controller"),
+        { 
+            // ["Spears"] = ("White_Palace_12", "wp_trap_spikes"),
             // ["Godseeker"] = ("GG_Hornet_1", "GG_Arena_Prefab/Godseeker Crowd"),
             // ["Reference"] = ("GG_Hornet_1", "Boss Holder/Hornet Boss"),
         };

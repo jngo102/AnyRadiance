@@ -43,22 +43,22 @@ namespace AnyRadiance
 
             StartCoroutine(AccelerateNails(1.01f));
 
-            var wallPos = new[] { ArenaInfo.A1Left, ArenaInfo.A1Right }[Random.Range(0, 2)];
+            var wallPos = new[] { ArenaInfo.CurrentLeft, ArenaInfo.CurrentRight }[Random.Range(0, 2)];
             for (int i = 0; i < numWalls; i++)
             {
-                var safeSpot = Random.Range((int)ArenaInfo.A1Bottom + 4, (int)ArenaInfo.A1Top - 21);
+                var safeSpot = Random.Range((int)ArenaInfo.CurrentBottom + 4, (int)ArenaInfo.CurrentTop - 21);
 
-                for (int y = (int)ArenaInfo.A1Bottom; y < (int)ArenaInfo.A1Top; y++)
+                for (int y = (int)ArenaInfo.CurrentBottom; y < (int)ArenaInfo.CurrentTop; y++)
                 {
                     if (y == safeSpot) continue;
                     GameObject nail = AnyRadiance.Instance.GameObjects["Nail"].Spawn(new Vector3(wallPos, y, 0),
-                        Quaternion.Euler(0, 0, wallPos < ArenaInfo.A1CenterX ? -90 : 90));
+                        Quaternion.Euler(0, 0, wallPos < ArenaInfo.CurrentCenterX ? -90 : 90));
                     nail.GetComponent<tk2dSpriteAnimator>().Play("Nail Antic");
                     nail.GetComponent<DamageHero>().shadowDashHazard = true;
                     nails[i].Add(nail);
                 }
 
-                PlayOneShot(AnyRadiance.Instance.AudioClips["Sword Create"], transform.position);
+                AnyRadiance.Instance.AudioClips["Sword Create"].PlayOneShot(transform.position);
 
                 yield return new WaitForSeconds(0.35f);
 
@@ -71,17 +71,17 @@ namespace AnyRadiance
                     }
                 }
 
-                PlayOneShot(AnyRadiance.Instance.AudioClips["Sword Shoot"], transform.position);
+                AnyRadiance.Instance.AudioClips["Sword Shoot"].PlayOneShot(transform.position);
 
                 yield return new WaitForSeconds(0.5f);
 
-                if (wallPos < ArenaInfo.A1CenterX)
+                if (wallPos < ArenaInfo.CurrentCenterX)
                 {
-                    wallPos = ArenaInfo.A1Right;
+                    wallPos = ArenaInfo.CurrentRight;
                 }
                 else
                 {
-                    wallPos = ArenaInfo.A1Left;
+                    wallPos = ArenaInfo.CurrentLeft;
                 }
             }
         }
@@ -102,7 +102,7 @@ namespace AnyRadiance
                     Quaternion.Euler(0, 0, 180));
                 nails.Add(nail);
             }
-            PlayOneShot(AnyRadiance.Instance.AudioClips["Tele"], transform.position);
+            AnyRadiance.Instance.AudioClips["Tele"].PlayOneShot(transform.position);
 
             float currentTime = 0;
             while (currentTime < AnticTime)

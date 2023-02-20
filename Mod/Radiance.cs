@@ -1,4 +1,3 @@
-using GlobalEnums;
 using HutongGames.PlayMaker;
 using HutongGames.PlayMaker.Actions;
 using Modding;
@@ -13,14 +12,20 @@ namespace AnyRadiance
     internal partial class Radiance : MonoBehaviour
     {
         #region Constants
+
+        private const int NumPlatsA2 = 7;
 #if DEBUG
         private const int Phase1HP = 100;
+        private const int Phase2HP = 100;
+        private const int UltraOrbHP = 51;
 #else
         private const int Phase1HP = 2000;
+        private const int Phase2HP = 1200;
+        private const int UltraOrbHP = 250;
 #endif
-#endregion
+        #endregion
 
-#region Components
+        #region Components
 
         private tk2dSpriteAnimator _animator;
         private AudioSource _audio;
@@ -28,21 +33,21 @@ namespace AnyRadiance
         private HealthManager _healthManager;
         private MeshRenderer _renderer;
         private Rigidbody2D _rigidbody;
-#endregion
+        #endregion
 
-#region Other Game Objects and Components
+        #region Other Game Objects and Components
 
         private GameObject _bossCtrl;
         private PlayMakerFSM _haloFSM;
         private HeroController _hc;
         private PlayerData _pd;
         private PlayMakerFSM _spellCtrl;
-#endregion
+        #endregion
 
         private static Coroutine _logic;
 
         private void Awake()
-        {   
+        {
             _animator = GetComponent<tk2dSpriteAnimator>();
             _audio = GetComponent<AudioSource>();
             _collider = GetComponent<PolygonCollider2D>();
@@ -64,6 +69,7 @@ namespace AnyRadiance
             AnyRadiance.Instance.AudioClips["Beam Burst"] = (AudioClip)cmdFSM.GetAction<AudioPlayerOneShotSingle>("EB 1").audioClip.Value;
             AnyRadiance.Instance.AudioClips["Beam Prepare"] = (AudioClip)cmdFSM.GetAction<AudioPlaySimple>("EB 1").oneShotClip.Value;
             AnyRadiance.Instance.AudioClips["Burst Move Up"] = (AudioClip)ctrlFSM.GetAction<AudioPlayerOneShotSingle>("Stun1 Out").audioClip.Value;
+            AnyRadiance.Instance.AudioClips["Final Hit"] = (AudioClip)ctrlFSM.GetAction<AudioPlayerOneShotSingle>("Statue Death 2").audioClip.Value;
             AnyRadiance.Instance.AudioClips["Ghost"] = (AudioClip)cmdFSM.GetAction<AudioPlayerOneShotSingle>("Orb Summon").audioClip.Value;
             AnyRadiance.Instance.AudioClips["Knock Down"] = (AudioClip)ctrlFSM.GetAction<AudioPlayerOneShotSingle>("Stun1 Start").audioClip.Value;
             AnyRadiance.Instance.AudioClips["Projectile"] = (AudioClip)cmdFSM.GetAction<AudioPlaySimple>("Spawn Fireball").oneShotClip.Value;
@@ -84,20 +90,14 @@ namespace AnyRadiance
             foreach (var fsm in GetComponents<PlayMakerFSM>()) Destroy(fsm);
 
             GetChildren();
-
+    
             HeroController.instance.gameObject.GetOrAddComponent<Knight>();
-
-            On.HealthManager.Die += StartDeath;
         }
 
         private IEnumerator Start()
         {
             yield return new WaitForSeconds(0.4f);
-            PlayOneShot(AnyRadiance.Instance.AudioClips["Appear"], transform.position);
-            GameCameras.instance.cameraShakeFSM.SendEvent("BigShake");
-            yield return StartCoroutine(TeleOut());
-            yield return StartCoroutine(TeleIn(new Vector3(60.63f, 27, 0.006f)));
-            _logic = StartCoroutine(StartBattle());
+            _logic = StartCoroutine(StartPhase1());
         }
 
         private void OnDestroy()
@@ -110,22 +110,30 @@ namespace AnyRadiance
             var knight = HeroController.instance.gameObject.GetComponent<Knight>();
             if (knight != null) Destroy(knight);
 
-            On.HealthManager.Die -= StartDeath;
+            On.HealthManager.Die -= StartPhase1Death;
+            On.HealthManager.Die -= StartPhase2Death;
         }
 
-        private void StartDeath(On.HealthManager.orig_Die orig, HealthManager self, float? attackDirection, AttackTypes attackType, bool ignoreEvasion)
+        private void StartPhase1Death(On.HealthManager.orig_Die orig, HealthManager self, float? attackDirection, AttackTypes attackType, bool ignoreEvasion)
         {
             orig(self, attackDirection, attackType, ignoreEvasion);
             if (self.name != "Absolute Radiance") return;
-            StartCoroutine(Death());
+            StartCoroutine(Phase1Death());
         }
 
-        private IEnumerator Death()
+        private void StartPhase2Death(On.HealthManager.orig_Die orig, HealthManager self, float? attackDirection, AttackTypes attackType, bool ignoreEvasion)
+        {
+            orig(self, attackDirection, attackType, ignoreEvasion);
+            if (self.name != "Absolute Radiance") return;
+            StartCoroutine(Phase2Death());
+        }
+
+        private IEnumerator Phase1Death()
         {
             StopCoroutine(_logic);
             var shakeFSM = GameCameras.instance.cameraShakeFSM.Fsm;
             GameManager.instance.gameObject.Child("GlobalPool/Stun Effect(Clone)").Spawn(transform.position);
-            PlayOneShot(AnyRadiance.Instance.AudioClips["Knock Down"], transform.position);
+            AnyRadiance.Instance.AudioClips["Knock Down"].PlayOneShot(transform.position);
             shakeFSM.GetFsmBool("RumblingMed").Value = false;
             CamShake("BigShake");
             _haloFSM.SendEvent("DOWN");
@@ -147,18 +155,20 @@ namespace AnyRadiance
 
             yield return new WaitForSeconds(2);
 
-            AnyRadiance.Instance.GameObjects["Stun Eye Glow"].LocateMyFSM("FSM").SendEvent("UP");
-            PlayOneShot(AnyRadiance.Instance.AudioClips["Tentacle Sucking"], transform.position);
-            AnyRadiance.Instance.GameObjects["Roar Wave Stun"].SetActive(true);
+            GameObject roarWaveStun = AnyRadiance.Instance.GameObjects["Roar Wave Stun"];
+            GameObject stunEyeGlow = AnyRadiance.Instance.GameObjects["Stun Eye Glow"];
+            stunEyeGlow.LocateMyFSM("FSM").SendEvent("UP");
+            AnyRadiance.Instance.AudioClips["Tentacle Sucking"].PlayOneShot(transform.position);
+            roarWaveStun.SetActive(true);
             shakeFSM.GetFsmBool("RumblingBig").Value = true;
 
             yield return new WaitForSeconds(1.5f);
 
-            AnyRadiance.Instance.GameObjects["Roar Wave Stun"].SetActive(false);
-            PlayOneShot(AnyRadiance.Instance.AudioClips["Burst Move Up"], transform.position);
+            roarWaveStun.SetActive(false);
+            AnyRadiance.Instance.AudioClips["Burst Move Up"].PlayOneShot(transform.position);
             _renderer.enabled = false;
             shakeFSM.GetFsmBool("RumblingBig").Value = false;
-            AnyRadiance.Instance.GameObjects["Stun Eye Glow"].SetActive(false);
+            stunEyeGlow.LocateMyFSM("FSM").SendEvent("DOWN INSTANT");
             AnyRadiance.Instance.GameObjects["White Flash"].SetActive(true);
             CamShake("BigShake");
             AnyRadiance.Instance.Particles["Stun Out Burst"].Play();
@@ -173,9 +183,6 @@ namespace AnyRadiance
                 fsm.SendEvent("APPEAR");
             }
 
-            HeroController.instance.SetHazardRespawn(
-                AnyRadiance.Instance.GameObjects["Plat Sets"].Child("Hazard Plat/Hazard Respawn Marker").transform
-                    .position, true);
             iTween.MoveBy(AnyRadiance.Instance.GameObjects["Abyss Pit"], Vector3.up, 1);
 
             yield return new WaitForSeconds(2);
@@ -190,6 +197,61 @@ namespace AnyRadiance
             shakeFSM.GetFsmBool("RumblingMed").Value = false;
 
             yield return new WaitForSeconds(1);
+
+            _logic = StartCoroutine(StartPhase2());
+        }
+
+        private IEnumerator Phase2Death()
+        {
+            yield return null;
+            StopCoroutine(_logic);
+            var shakeFSM = GameCameras.instance.cameraShakeFSM.Fsm;
+            GameManager.instance.gameObject.Child("GlobalPool/Stun Effect(Clone)").Spawn(transform.position);
+            AnyRadiance.Instance.AudioClips["Knock Down"].PlayOneShot(transform.position);
+            shakeFSM.GetFsmBool("RumblingMed").Value = false;
+            CamShake("BigShake");
+            _haloFSM.SendEvent("DOWN");
+            foreach (var attack in FindObjectsOfType<GameObject>().Where(go =>
+                     {
+                         return go.name.Contains("Radiant Orb") ||
+                                go.name.Contains("Radiant Spike") ||
+                                go.name.Contains("Radiant Nail") ||
+                                go.name.Contains("Ascend Beam");
+                     }))
+            {
+                Destroy(attack);
+            }
+            AnyRadiance.Instance.GameObjects["Legs"].SetActive(false);
+            _collider.enabled = false;
+            _animator.Play("Death");
+            AnyRadiance.Instance.Particles["Feather Burst"].Stop();
+            AnyRadiance.Instance.GameObjects["White Flash"].SetActive(true);
+
+            yield return new WaitForSeconds(2);
+
+            GameObject roarWaveStun = AnyRadiance.Instance.GameObjects["Roar Wave Stun"];
+            GameObject stunEyeGlow = AnyRadiance.Instance.GameObjects["Stun Eye Glow"];
+            roarWaveStun.transform.localPosition = stunEyeGlow.transform.localPosition = new Vector2(-0.5f, 3);
+            stunEyeGlow.LocateMyFSM("FSM").SendEvent("UP");
+            AnyRadiance.Instance.AudioClips["Tentacle Sucking"].PlayOneShot(transform.position);
+            roarWaveStun.SetActive(true);
+            shakeFSM.GetFsmBool("RumblingBig").Value = true;
+
+            yield return new WaitForSeconds(1.5f);
+
+            roarWaveStun.SetActive(false);
+            AnyRadiance.Instance.AudioClips["Burst Move Up"].PlayOneShot(transform.position);
+            _renderer.enabled = false;
+            shakeFSM.GetFsmBool("RumblingBig").Value = false;
+            AnyRadiance.Instance.GameObjects["Stun Eye Glow"].SetActive(false);
+            AnyRadiance.Instance.GameObjects["White Flash"].SetActive(true);
+            CamShake("BigShake");
+            AnyRadiance.Instance.Particles["Stun Out Burst"].Play();
+            AnyRadiance.Instance.Particles["Stun Out Rise"].Play();
+
+            yield return new WaitForSeconds(2);
+
+            shakeFSM.GetFsmBool("RumblingBig").Value = false;
         }
 
         private void GetChildren()
@@ -201,6 +263,8 @@ namespace AnyRadiance
             AnyRadiance.Instance.GameObjects["CamLock Main"] = _bossCtrl.Child("CamLocks/CamLock Main");
             AnyRadiance.Instance.GameObjects["Plat Sets"] = _bossCtrl.Child("Plat Sets");
             AnyRadiance.Instance.GameObjects["Abyss Pit"] = _bossCtrl.Child("Abyss Pit");
+            AnyRadiance.Instance.GameObjects["White Fader"] = _bossCtrl.Child("White Fader");
+            
             AnyRadiance.Instance.GameObjects["Glow"] = gameObject.Child("Eye Beam Glow");
             AnyRadiance.Instance.GameObjects["Beam"] = gameObject.Child("Eye Beam Glow/Ascend Beam");
             AnyRadiance.Instance.GameObjects["Eye Beam"] = gameObject.Child("Eye Beam Glow/Burst 1/Radiant Beam");
@@ -220,39 +284,24 @@ namespace AnyRadiance
             AnyRadiance.Instance.GameObjects["Beam"].CreatePool(30);
             AnyRadiance.Instance.GameObjects["Abyss Pit"].GetComponentInChildren<DamageHero>().damageDealt = 2;
 
-            GameObject a2Plats = AnyRadiance.Instance.GameObjects["Plat Sets"].Child("P2 SetA");
+            GameObject a2Plats = new GameObject("A2 Plats");
+            a2Plats.transform.SetParent(AnyRadiance.Instance.GameObjects["Plat Sets"].transform);
             var rotator = a2Plats.AddComponent<PlatRotator>();
-            foreach (Transform plat in a2Plats.transform)
+            var platPrefab = AnyRadiance.Instance.GameObjects["Plat Sets"].Child("P2 SetA/Radiant Plat Small (2)");
+            for (int i = 0; i < NumPlatsA2; i++)
             {
-                if (!plat.gameObject.LocateMyFSM("radiant_plat")) continue;
-                var platBody = plat.gameObject.AddComponent<Rigidbody2D>();
-                platBody.isKinematic = true;
-                platBody.interpolation = RigidbodyInterpolation2D.Interpolate;
-                platBody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-                rotator.AddPlatform(plat.gameObject);
+                var plat = Instantiate(platPrefab, a2Plats.transform);
+                plat.AddComponent<MovingPlatform>();
+                rotator.AddPlatform(plat);
             }
-            
-            foreach (Transform plat in AnyRadiance.Instance.GameObjects["Plat Sets"].Child("Hazard Plat").transform)
+            foreach (Transform child in AnyRadiance.Instance.GameObjects["Plat Sets"].transform)
             {
-                if (!plat.gameObject.LocateMyFSM("radiant_plat")) continue;
-                var platBody = plat.gameObject.AddComponent<Rigidbody2D>();
-                platBody.isKinematic = true;
-                platBody.interpolation = RigidbodyInterpolation2D.Interpolate;
-                platBody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-                rotator.AddPlatform(plat.gameObject);
-            }
-
-            foreach (var plat in AnyRadiance.Instance.GameObjects["Plat Sets"].GetComponentsInChildren<PlayMakerFSM>())
-            {
-                if (plat.FsmName != "radiant_plat") continue;
-                //var platSticker = new GameObject("Sticker");
-                //platSticker.transform.SetParent(plat.transform, false);
-                //platSticker.AddComponent<MovingPlatform>();
-                plat.gameObject.AddComponent<MovingPlatform>();
+                if (child.name == "A2 Plats" || child.name == "Climb Set") continue;
+                Destroy(child.gameObject);
             }
         }
 
-#region Helpers
+        #region Helpers
         private IEnumerator AnimPlayUntilFinished(string animName)
         {
             _animator.Play(animName);
@@ -263,17 +312,9 @@ namespace AnyRadiance
         {
             GameCameras.instance.cameraShakeFSM.SendEvent(eventName);
         }
+        #endregion
 
-        public static void PlayOneShot(AudioClip clip, Vector3 location)
-        {
-            GameObject audioPlayer = AnyRadiance.Instance.GameObjects["Audio Player"].Spawn(location);
-            var audioSource = audioPlayer.GetComponent<AudioSource>();
-            audioSource.clip = clip;
-            audioSource.Play();
-        }
-#endregion
-
-#region Teleport
+        #region Teleport
         private IEnumerator TeleIn(Vector3 destination)
         {
             AnyRadiance.Instance.GameObjects["Tele Flash"].SetActive(true);
@@ -295,15 +336,23 @@ namespace AnyRadiance
             AnyRadiance.Instance.GameObjects["Legs"].SetActive(false);
             _rigidbody.velocity = Vector2.zero;
             AnyRadiance.Instance.Particles["Tele Out"].Play();
-            PlayOneShot(AnyRadiance.Instance.AudioClips["Tele"], transform.position);
+            AnyRadiance.Instance.AudioClips["Tele"].PlayOneShot(transform.position);
             yield return AnimPlayUntilFinished("Tele Out");
             _renderer.enabled = false;
         }
 
-#endregion
+        #endregion
 
-        private IEnumerator StartBattle()
+        private IEnumerator StartPhase1()
         {
+            ArenaInfo.SetPhase(1);
+            On.HealthManager.Die += StartPhase1Death;
+
+            AnyRadiance.Instance.AudioClips["Appear"].PlayOneShot(transform.position);
+            GameCameras.instance.cameraShakeFSM.SendEvent("BigShake");
+            yield return TeleOut();
+            yield return TeleIn(new Vector3(60.63f, 27, 0.006f));
+
             // Activate all spikes and make them stay up.
             foreach (var fsm in FindObjectsOfType<PlayMakerFSM>(true)
                          .Where(fsm => fsm.name.Contains("Radiant Spike")))
@@ -324,17 +373,78 @@ namespace AnyRadiance
                 _animator.Play("Recover");
                 yield return new WaitForSeconds(Random.Range(0.25f, 0.35f));
                 yield return AnimPlayUntilFinished("Cast");
-                yield return ChooseAttack();
+                yield return ChooseAttackP1();
 
                 yield return TeleOut();
-                yield return TeleIn(new Vector3(Random.Range(ArenaInfo.A1Left, ArenaInfo.A1Right), transform.position.y, transform.position.z));
+                yield return TeleIn(new Vector3(Random.Range(ArenaInfo.CurrentLeft, ArenaInfo.CurrentRight), transform.position.y, transform.position.z));
             }
         }
 
-        private IEnumerator ChooseAttack()
+        private IEnumerator StartPhase2()
+        {
+            ArenaInfo.SetPhase(2);
+            On.HealthManager.Die -= StartPhase1Death;
+            On.HealthManager.Die += StartPhase2Death;
+            _healthManager.IsInvincible = true;
+
+            AnyRadiance.Instance.AudioClips["Appear"].PlayOneShot(transform.position);
+            GameCameras.instance.cameraShakeFSM.SendEvent("BigShake");
+            yield return TeleIn(new Vector3(Random.Range(ArenaInfo.CurrentLeft, ArenaInfo.CurrentRight), Random.Range(ArenaInfo.CurrentBottom, ArenaInfo.CurrentTop), transform.position.z));
+
+            yield return SummonBeamOrb(
+                true,
+                30,
+                45,
+                0.1f,
+                6,
+                5,
+                1,
+                float.MaxValue,
+                true);
+
+            _healthManager.hp = Phase1HP;
+            while (_healthManager.hp >= UltraOrbHP)
+            {
+                _animator.Play("Recover");
+                yield return new WaitForSeconds(Random.Range(0.25f, 0.35f));
+                yield return AnimPlayUntilFinished("Cast");
+                yield return ChooseAttackP2();
+
+                yield return TeleOut();
+                yield return TeleIn(new Vector3(Random.Range(ArenaInfo.CurrentLeft, ArenaInfo.CurrentRight), Random.Range(ArenaInfo.CurrentBottom, ArenaInfo.CurrentTop), transform.position.z));
+            }
+
+            yield return TeleOut();
+            yield return TeleIn(new Vector3(ArenaInfo.CurrentCenterX, ArenaInfo.CurrentBottom + (ArenaInfo.CurrentTop - ArenaInfo.CurrentBottom) / 2, 0));
+
+            yield return SummonUltraOrb(5, 0.2f);
+        }
+
+        private IEnumerator ChooseAttackP1()
         {
             var attackOptions = new[] { LaserColumns(), NailWalls() };
-            var extraAttacks = new[] { NailBarrage(), SummonMegaOrb(), SummonBeamOrb() };
+            var extraAttacks = new[]
+            {
+                NailBarrage(), 
+                SummonBeamOrb(
+                    false, 
+                    0, 
+                    15, 
+                    0.25f, 
+                    3, 
+                    3, 
+                    0.5f, 
+                    2), 
+                SummonMegaOrb(
+                    2.0f / 3, 
+                    0.5f, 
+                    1.5f, 
+                    12, 
+                    2, 
+                    2, 
+                    1.5f, 
+                    2),
+            };
             var chosenAttack = attackOptions[Random.Range(0, attackOptions.Length)];
             if (_healthManager.hp <= Phase1HP / 2)
             {
@@ -342,6 +452,24 @@ namespace AnyRadiance
                 var extraAttack = extraAttacks[Random.Range(0, extraAttacks.Length)];
                 StartCoroutine(extraAttack);
             }
+            yield return chosenAttack;
+        }
+
+        private IEnumerator ChooseAttackP2()
+        {
+            var attackOptions = new[] { 
+                NailBarrage(),
+                SummonMegaOrb(
+                    1, 
+                    0.5f, 
+                    2, 
+                    12, 
+                    2, 
+                    2, 
+                    2, 
+                    2)
+            };
+            var chosenAttack = attackOptions[Random.Range(0, attackOptions.Length)];
             yield return chosenAttack;
         }
     }

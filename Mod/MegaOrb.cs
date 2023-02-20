@@ -7,12 +7,14 @@ namespace AnyRadiance
 {
     internal class MegaOrb : MonoBehaviour
     {
-        private const float FollowTime = 2.0f / 3;
-        private const float MinScale = 0.5f;
-
-        public float TrackingAcceleration = 1.5f;
-        public float MaxTrackingSpeed = 12;
-        public float Scale = 2;
+        private float _followTime = 2.0f / 3;
+        private float _minScale = 0.5f;
+        private float _trackingAcceleration = 1.5f;
+        private float _maxTrackingSpeed = 12;
+        private float _scale = 2;
+        private float _maxSpeedIncrease = 2;
+        private float _trackAccelIncrease = 1.5f;
+        private float _scaleDivider = 2;
 
         private tk2dSpriteAnimator _animator;
         private AudioSource _audio;
@@ -44,7 +46,7 @@ namespace AnyRadiance
 
         private IEnumerator Start()
         {
-            while (transform.localScale.x < Scale)
+            while (transform.localScale.x < _scale)
             {
                 yield return null;
                 transform.localScale += Vector3.one * Time.deltaTime;
@@ -52,21 +54,33 @@ namespace AnyRadiance
 
             Launch();
         }
-
-        public void Launch()
-        {
-            _appearGlow.SetActive(true);
-            Following = true;
-            _rigidbody.velocity = new Vector2(Random.Range(-MaxTrackingSpeed, MaxTrackingSpeed), Random.Range(-MaxTrackingSpeed, MaxTrackingSpeed));
-            StartCoroutine(Split(FollowTime));
-        }
-
+        
         private void FixedUpdate()
         {
             if (!Following) return;
             Track(HeroController.instance.gameObject);
         }
 
+        public void Launch()
+        {
+            _appearGlow.SetActive(true);
+            Following = true;
+            _rigidbody.velocity = new Vector2(Random.Range(-_maxTrackingSpeed, _maxTrackingSpeed), Random.Range(-_maxTrackingSpeed, _maxTrackingSpeed));
+            StartCoroutine(Split(_followTime));
+        }
+
+        public void SetParams(float followTime, float minScale, float trackingAcceleration, float maxTrackingSpeed, float scale, float maxSpeedIncrease, float trackAccelIncrease, float scaleDivider)
+        {
+            _followTime = followTime;
+            _minScale = minScale;
+            _trackingAcceleration = trackingAcceleration;
+            _maxTrackingSpeed = maxTrackingSpeed;
+            _scale = scale;
+            _maxSpeedIncrease = maxSpeedIncrease;
+            _trackAccelIncrease = trackAccelIncrease;
+            _scaleDivider = scaleDivider;
+        }
+        
         private IEnumerator Split(float delay)
         {
             yield return new WaitForSeconds(delay);
@@ -75,7 +89,7 @@ namespace AnyRadiance
             _audio.Stop();
             Following = false;
             _particles.Stop();
-            if (Scale <= MinScale)
+            if (_scale <= _minScale)
             {
                 yield return new WaitUntil(() => _animator.IsFinished());
                 Destroy(gameObject);
@@ -87,21 +101,19 @@ namespace AnyRadiance
                 var smallerOrb = gameObject.Spawn();
                 smallerOrb.transform.SetPosition2D(transform.position);
                 var orbComponent = smallerOrb.GetOrAddComponent<MegaOrb>();
-                smallerOrb.transform.localScale = Vector3.one * Scale / 2;
-                orbComponent.Scale = Scale / 2;
-                orbComponent.MaxTrackingSpeed = MaxTrackingSpeed + 2;
-                orbComponent.TrackingAcceleration = TrackingAcceleration * 1.5f;
+                smallerOrb.transform.localScale = Vector3.one * _scale / 2;
+                orbComponent.SetParams(_followTime, _minScale, _trackingAcceleration * _trackAccelIncrease, _maxTrackingSpeed + _maxSpeedIncrease, _scale / _scaleDivider, _trackAccelIncrease, _maxSpeedIncrease, _scaleDivider);
                 orbComponent.Launch();
             }
 
-            Radiance.PlayOneShot(AnyRadiance.Instance.AudioClips["Projectile"], transform.position);
+            AnyRadiance.Instance.AudioClips["Projectile"].PlayOneShot(transform.position);
             Destroy(gameObject);
         }
 
         public void Track(GameObject target)
         {
-            _rigidbody.velocity += (Vector2)(target.transform.position - transform.position).normalized * TrackingAcceleration;
-            _rigidbody.velocity = Vector2.ClampMagnitude(_rigidbody.velocity, MaxTrackingSpeed);
+            _rigidbody.velocity += (Vector2)(target.transform.position - transform.position).normalized * _trackingAcceleration;
+            _rigidbody.velocity = Vector2.ClampMagnitude(_rigidbody.velocity, _maxTrackingSpeed);
         }
     }
 }
