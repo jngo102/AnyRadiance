@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace AnyRadiance
@@ -9,11 +10,24 @@ namespace AnyRadiance
         
         private void Awake()
         {
+            var renderer = GetComponent<MeshRenderer>();
+            
             _rigidbody = gameObject.AddComponent<Rigidbody2D>();
             _rigidbody.isKinematic = true;
             _rigidbody.interpolation = RigidbodyInterpolation2D.Interpolate;
             _rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
             _rigidbody.sharedMaterial = new PhysicsMaterial2D { friction = 5 };
+
+            GameObject spikePrefab = AnyRadiance.Instance.GameObjects["Spike"];
+            Bounds bounds = renderer.bounds;
+            for (float i = bounds.min.x; i < bounds.max.x; i += (bounds.max.x - bounds.min.x) / 5)
+            {
+                var spike = spikePrefab.Spawn(transform);
+                spike.name = "Moving Plat Spike(" + i + ")";
+                spike.transform.localPosition = new Vector2(i - bounds.center.x + 0.25f, bounds.max.y - bounds.center.y + 1);
+                Destroy(spike.LocateMyFSM("Hero Saver"));
+                spike.GetComponent<DamageHero>().damageDealt = 2;
+            }
         }
         
         private void OnCollisionStay2D(Collision2D other)

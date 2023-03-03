@@ -336,5 +336,6 @@
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="ReadMe.md" />
+    <EmbeddedResource Include="Assets\anyrad" />
   </ItemGroup>
 </Project>

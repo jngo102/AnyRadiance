@@ -30,6 +30,7 @@ namespace AnyRadiance
 
         private List<GameObject> _beams = new();
 
+        private Coroutine _bounceRoutine;
         private Coroutine _intervalRoutine;
 
         private void Awake()
@@ -93,6 +94,8 @@ namespace AnyRadiance
         {
             if (!_bouncing) return;
 
+            StopCoroutine(_bounceRoutine);
+
             if (other.name == "Absolute Radiance")
             {
                 foreach (var beam in _beams)
@@ -144,14 +147,20 @@ namespace AnyRadiance
             }
             
             _rigidbody.velocity += direction * _bounceForce;
-            StartCoroutine(StartBounce());
+            _bounceRoutine = StartCoroutine(StartBounce());
         }
 
+        private const float MaxBounceTime = 2;
         private IEnumerator StartBounce()
         {
             _bouncing = true;
             gameObject.layer = (int)PhysLayers.HERO_ATTACK;
-            yield return new WaitWhile(() => _rigidbody.velocity.magnitude >= 1);
+            float bounceTime = 0;
+            yield return new WaitWhile(() =>
+            {
+                bounceTime += Time.deltaTime;
+                return _rigidbody.velocity.magnitude >= 1 || bounceTime >= MaxBounceTime;
+            });
             _bouncing = false;
             gameObject.layer = (int)PhysLayers.ENEMIES;
             if (_intervalRoutine != null) StopCoroutine(_intervalRoutine);

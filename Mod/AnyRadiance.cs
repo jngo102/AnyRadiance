@@ -5,11 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Vasi;
 using UObject = UnityEngine.Object;
-using USceneManager = UnityEngine.SceneManagement.SceneManager;
 
 namespace AnyRadiance
 {
@@ -51,6 +49,8 @@ namespace AnyRadiance
             }
 
             Unload();
+            
+            LoadAssets();
 
             ModHooks.BeforeSavegameSaveHook += BeforeSaveGameSave;
             ModHooks.AfterSavegameLoadHook += SaveGame;
@@ -148,6 +148,29 @@ namespace AnyRadiance
             foreach (var option in menu.gameObject.GetComponentsInChildren<MenuOptionHorizontal>())
             {
                 option.menuSetting.RefreshValueFromGameSettings();
+            }
+        }
+
+        private void LoadAssets()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            foreach (string resourceName in assembly.GetManifestResourceNames())
+            {
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                {
+                    if (stream == null) continue;
+
+                    if (resourceName.Contains("anyrad"))
+                    {
+                        var bundle = AssetBundle.LoadFromStream(stream);
+                        foreach (var clip in bundle.LoadAllAssets<AudioClip>())
+                        {
+                            AudioClips.Add(clip.name, clip);
+                        }
+                    }
+
+                    stream.Dispose();
+                }
             }
         }
 

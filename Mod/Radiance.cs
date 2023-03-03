@@ -44,6 +44,7 @@ namespace AnyRadiance
         private PlayMakerFSM _spellCtrl;
         #endregion
 
+        private byte _phase;
         private static Coroutine _logic;
 
         private void Awake()
@@ -57,26 +58,7 @@ namespace AnyRadiance
 
             _healthManager.hp = Phase1HP;
 
-            PlayMakerFSM cmdFSM = gameObject.LocateMyFSM("Attack Commands");
-            PlayMakerFSM ctrlFSM = gameObject.LocateMyFSM("Control");
-            PlayMakerFSM teleFSM = gameObject.LocateMyFSM("Teleport");
-
-            AnyRadiance.Instance.GameObjects["Audio Player"] = teleFSM.GetAction<AudioPlayerOneShotSingle>("Antic").audioPlayer.Value;
-            AnyRadiance.Instance.GameObjects["Nail"] = cmdFSM.GetAction<SpawnObjectFromGlobalPool>("CW Spawn").gameObject.Value;
-            AnyRadiance.Instance.GameObjects["Orb"] = cmdFSM.GetAction<SpawnObjectFromGlobalPool>("Spawn Fireball").gameObject.Value;
-
-            AnyRadiance.Instance.AudioClips["Appear"] = (AudioClip)ctrlFSM.GetAction<AudioPlayerOneShotSingle>("First Tele").audioClip.Value;
-            AnyRadiance.Instance.AudioClips["Beam Burst"] = (AudioClip)cmdFSM.GetAction<AudioPlayerOneShotSingle>("EB 1").audioClip.Value;
-            AnyRadiance.Instance.AudioClips["Beam Prepare"] = (AudioClip)cmdFSM.GetAction<AudioPlaySimple>("EB 1").oneShotClip.Value;
-            AnyRadiance.Instance.AudioClips["Burst Move Up"] = (AudioClip)ctrlFSM.GetAction<AudioPlayerOneShotSingle>("Stun1 Out").audioClip.Value;
-            AnyRadiance.Instance.AudioClips["Final Hit"] = (AudioClip)ctrlFSM.GetAction<AudioPlayerOneShotSingle>("Statue Death 2").audioClip.Value;
-            AnyRadiance.Instance.AudioClips["Ghost"] = (AudioClip)cmdFSM.GetAction<AudioPlayerOneShotSingle>("Orb Summon").audioClip.Value;
-            AnyRadiance.Instance.AudioClips["Knock Down"] = (AudioClip)ctrlFSM.GetAction<AudioPlayerOneShotSingle>("Stun1 Start").audioClip.Value;
-            AnyRadiance.Instance.AudioClips["Projectile"] = (AudioClip)cmdFSM.GetAction<AudioPlaySimple>("Spawn Fireball").oneShotClip.Value;
-            AnyRadiance.Instance.AudioClips["Sword Create"] = (AudioClip)cmdFSM.GetAction<AudioPlayerOneShotSingle>("Dir").audioClip.Value;
-            AnyRadiance.Instance.AudioClips["Sword Shoot"] = (AudioClip)cmdFSM.GetAction<AudioPlayerOneShotSingle>("CW Fire").audioClip.Value;
-            AnyRadiance.Instance.AudioClips["Tele"] = (AudioClip)teleFSM.GetAction<AudioPlayerOneShotSingle>("Antic").audioClip.Value;
-            AnyRadiance.Instance.AudioClips["Tentacle Sucking"] = (AudioClip)ctrlFSM.GetAction<AudioPlayerOneShotSingle>("Stun1 Roar").audioClip.Value;
+            GetAudioClips();
 
             _hc = HeroController.instance;
             _pd = PlayerData.instance;
@@ -181,6 +163,11 @@ namespace AnyRadiance
             {
                 if (fsm.transform.parent.name == "Ascend Set") continue;
                 fsm.SendEvent("APPEAR");
+                foreach (var spikeFSM in fsm.GetComponentsInChildren<PlayMakerFSM>()
+                             .Where(pfsm => pfsm.name.Contains("Moving Plat Spike")))
+                {
+                    spikeFSM.SendEvent("UP");
+                }
             }
 
             iTween.MoveBy(AnyRadiance.Instance.GameObjects["Abyss Pit"], Vector3.up, 1);
@@ -211,13 +198,10 @@ namespace AnyRadiance
             shakeFSM.GetFsmBool("RumblingMed").Value = false;
             CamShake("BigShake");
             _haloFSM.SendEvent("DOWN");
-            foreach (var attack in FindObjectsOfType<GameObject>().Where(go =>
-                     {
-                         return go.name.Contains("Radiant Orb") ||
-                                go.name.Contains("Radiant Spike") ||
-                                go.name.Contains("Radiant Nail") ||
-                                go.name.Contains("Ascend Beam");
-                     }))
+            foreach (var attack in FindObjectsOfType<GameObject>().Where(go => go.name.Contains("Radiant Orb") ||
+                                                                               go.name.Contains("Radiant Spike") ||
+                                                                               go.name.Contains("Radiant Nail") ||
+                                                                               go.name.Contains("Ascend Beam")))
             {
                 Destroy(attack);
             }
@@ -251,9 +235,33 @@ namespace AnyRadiance
 
             yield return new WaitForSeconds(2);
 
+            shakeFSM.GetFsmBool("RumblingMed").Value = false;
             shakeFSM.GetFsmBool("RumblingBig").Value = false;
         }
 
+        private void GetAudioClips()
+        {
+            PlayMakerFSM cmdFSM = gameObject.LocateMyFSM("Attack Commands");
+            PlayMakerFSM ctrlFSM = gameObject.LocateMyFSM("Control");
+            PlayMakerFSM teleFSM = gameObject.LocateMyFSM("Teleport");
+
+            AnyRadiance.Instance.GameObjects["Audio Player"] = teleFSM.GetAction<AudioPlayerOneShotSingle>("Antic").audioPlayer.Value;
+            AnyRadiance.Instance.GameObjects["Nail"] = cmdFSM.GetAction<SpawnObjectFromGlobalPool>("CW Spawn").gameObject.Value;
+            AnyRadiance.Instance.GameObjects["Orb"] = cmdFSM.GetAction<SpawnObjectFromGlobalPool>("Spawn Fireball").gameObject.Value;
+            AnyRadiance.Instance.AudioClips["Appear"] = (AudioClip)ctrlFSM.GetAction<AudioPlayerOneShotSingle>("First Tele").audioClip.Value;
+            AnyRadiance.Instance.AudioClips["Beam Burst"] = (AudioClip)cmdFSM.GetAction<AudioPlayerOneShotSingle>("EB 1").audioClip.Value;
+            AnyRadiance.Instance.AudioClips["Beam Prepare"] = (AudioClip)cmdFSM.GetAction<AudioPlaySimple>("EB 1").oneShotClip.Value;
+            AnyRadiance.Instance.AudioClips["Burst Move Up"] = (AudioClip)ctrlFSM.GetAction<AudioPlayerOneShotSingle>("Stun1 Out").audioClip.Value;
+            AnyRadiance.Instance.AudioClips["Final Hit"] = (AudioClip)ctrlFSM.GetAction<AudioPlayerOneShotSingle>("Statue Death 2").audioClip.Value;
+            AnyRadiance.Instance.AudioClips["Ghost"] = (AudioClip)cmdFSM.GetAction<AudioPlayerOneShotSingle>("Orb Summon").audioClip.Value;
+            AnyRadiance.Instance.AudioClips["Knock Down"] = (AudioClip)ctrlFSM.GetAction<AudioPlayerOneShotSingle>("Stun1 Start").audioClip.Value;
+            AnyRadiance.Instance.AudioClips["Projectile"] = (AudioClip)cmdFSM.GetAction<AudioPlaySimple>("Spawn Fireball").oneShotClip.Value;
+            AnyRadiance.Instance.AudioClips["Sword Create"] = (AudioClip)cmdFSM.GetAction<AudioPlayerOneShotSingle>("Dir").audioClip.Value;
+            AnyRadiance.Instance.AudioClips["Sword Shoot"] = (AudioClip)cmdFSM.GetAction<AudioPlayerOneShotSingle>("CW Fire").audioClip.Value;
+            AnyRadiance.Instance.AudioClips["Tele"] = (AudioClip)teleFSM.GetAction<AudioPlayerOneShotSingle>("Antic").audioClip.Value;
+            AnyRadiance.Instance.AudioClips["Tentacle Sucking"] = (AudioClip)ctrlFSM.GetAction<AudioPlayerOneShotSingle>("Stun1 Roar").audioClip.Value;
+        }
+        
         private void GetChildren()
         {
             _bossCtrl = transform.parent.gameObject;
@@ -264,6 +272,7 @@ namespace AnyRadiance
             AnyRadiance.Instance.GameObjects["Plat Sets"] = _bossCtrl.Child("Plat Sets");
             AnyRadiance.Instance.GameObjects["Abyss Pit"] = _bossCtrl.Child("Abyss Pit");
             AnyRadiance.Instance.GameObjects["White Fader"] = _bossCtrl.Child("White Fader");
+            AnyRadiance.Instance.GameObjects["Spike"] = _bossCtrl.Child("Spike Control/Far L/Radiant Spike");
             
             AnyRadiance.Instance.GameObjects["Glow"] = gameObject.Child("Eye Beam Glow");
             AnyRadiance.Instance.GameObjects["Beam"] = gameObject.Child("Eye Beam Glow/Ascend Beam");
@@ -280,8 +289,9 @@ namespace AnyRadiance
             AnyRadiance.Instance.Particles["Tele Out"] = gameObject.Child("Pt Tele Out").GetComponent<ParticleSystem>();
             AnyRadiance.Instance.Particles["Stun Out Burst"] = gameObject.Child("Pt StunOutBurst").GetComponent<ParticleSystem>();
             AnyRadiance.Instance.Particles["Stun Out Rise"] = gameObject.Child("Pt StunOutRise").GetComponent<ParticleSystem>();
-
+            
             AnyRadiance.Instance.GameObjects["Beam"].CreatePool(30);
+            AnyRadiance.Instance.GameObjects["Spike"].CreatePool(50);
             AnyRadiance.Instance.GameObjects["Abyss Pit"].GetComponentInChildren<DamageHero>().damageDealt = 2;
 
             GameObject a2Plats = new GameObject("A2 Plats");
@@ -340,7 +350,8 @@ namespace AnyRadiance
 
         private IEnumerator StartPhase1()
         {
-            ArenaInfo.SetPhase(1);
+            _phase++;
+            ArenaInfo.SetPhase(_phase);
             On.HealthManager.Die += StartPhase1Death;
 
             AnyRadiance.Instance.AudioClips["Appear"].PlayOneShot(transform.position);
@@ -377,7 +388,8 @@ namespace AnyRadiance
 
         private IEnumerator StartPhase2()
         {
-            ArenaInfo.SetPhase(2);
+            _phase++;
+            ArenaInfo.SetPhase(_phase);
             On.HealthManager.Die -= StartPhase1Death;
             On.HealthManager.Die += StartPhase2Death;
             _healthManager.IsInvincible = true;

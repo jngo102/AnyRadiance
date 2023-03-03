@@ -3,8 +3,10 @@ using MonoMod.Utils;
 using System.Collections;
 using System.Linq;
 using System.Reflection;
+using HutongGames.PlayMaker.Actions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using ReflectionHelper = Modding.ReflectionHelper;
 using USceneManager = UnityEngine.SceneManagement.SceneManager;
 using Vasi;
 
@@ -81,6 +83,13 @@ namespace AnyRadiance
             FindObjectsOfType<GameObject>(true).FirstOrDefault(go => 
                 go.name == "Absolute Radiance" && go.layer == (int)PhysLayers.ENEMIES)?
                 .AddComponent<Radiance>();
+
+            var applyMusicCue = GameObject.Find("Boss Control").LocateMyFSM("Control").GetAction<ApplyMusicCue>("Title Up");
+            var musicCue = applyMusicCue.musicCue.Value as MusicCue;
+            var channelInfos = ReflectionHelper.GetField<MusicCue, MusicCue.MusicChannelInfo[]>(musicCue, "channelInfos");
+            ReflectionHelper.SetField(channelInfos[0], "clip", AnyRadiance.Instance.AudioClips["Music"]);
+            ReflectionHelper.SetField(musicCue, "channelInfos", channelInfos);
+            applyMusicCue.musicCue = musicCue;
         }
     }
 }

@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 804145069
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d598a851a49782cc637304400fe813f9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Enemies/AnyRad/Audio/Music.wav
+Dependencies: []
