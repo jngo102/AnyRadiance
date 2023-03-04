@@ -30,11 +30,11 @@ MonoBehaviour:
     dataGUID: 
     managed: 0
     loadable: 0
-  - assetGUID: ec920bfda3ea0c847b0a1b0e96a1d271
+  - assetGUID: ffc2ef15bbca4e2458ab60d30e105fea
     dataGUID: 
     managed: 0
     loadable: 0
-  - assetGUID: ffc2ef15bbca4e2458ab60d30e105fea
+  - assetGUID: 42d9e379824b90f4cb16d09e1027af80
     dataGUID: 
     managed: 0
     loadable: 0
@@ -1759,6 +1759,31 @@ MonoBehaviour:
     - 1676244623.8926
     - 1676244624.47749
     - 1676244625.0714
+    managedSpriteCollection: 0
+    loadable: 0
+    assetName: 
+    version: 3
+  - name: TrueRad Cln
+    spriteCollectionGUID: d96ba1402df2d48439885a445960f1b8
+    spriteCollectionDataGUID: f2ca6319626bfff4f82619bda6da3f55
+    spriteNames:
+    - Idle/1
+    - Idle/2
+    - Idle/3
+    - Idle/4
+    - Idle/5
+    spriteTextureGUIDs:
+    - 570b4716a917ad4449d3957addf89280
+    - fce84f61b8d768b4984c61897e07dd76
+    - d84ca919590aef449aae7588935bb645
+    - 2cb6fd7c07099ab4b9393e8f40712a3c
+    - 3f72ac4fa368566439337d22996785e6
+    spriteTextureTimeStamps:
+    - 1677871690.53874
+    - 1677871690.53874
+    - 1677871690.53874
+    - 1677871690.53874
+    - 1677871690.53975
     managedSpriteCollection: 0
     loadable: 0
     assetName: 

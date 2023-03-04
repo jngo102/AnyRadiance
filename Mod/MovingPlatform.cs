@@ -20,7 +20,7 @@ namespace AnyRadiance
 
             GameObject spikePrefab = AnyRadiance.Instance.GameObjects["Spike"];
             Bounds bounds = renderer.bounds;
-            for (float i = bounds.min.x; i < bounds.max.x; i += (bounds.max.x - bounds.min.x) / 5)
+            for (float i = bounds.min.x; i < bounds.max.x; i += (bounds.max.x - bounds.min.x) / 4)
             {
                 var spike = spikePrefab.Spawn(transform);
                 spike.name = "Moving Plat Spike(" + i + ")";

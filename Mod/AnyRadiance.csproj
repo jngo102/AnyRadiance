@@ -8,7 +8,7 @@
     <Product>AnyRadiance</Product>
     <Description>Any Radiance 3.0 mod.</Description>
     <Copyright>Copyright © 2023 jngo102</Copyright>
-    <AssemblyVersion>0.0.2</AssemblyVersion>
+    <AssemblyVersion>0.0.3</AssemblyVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>

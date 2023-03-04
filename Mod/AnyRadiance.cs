@@ -22,7 +22,7 @@ namespace AnyRadiance
 
         private Dictionary<string, (string, string)> _preloads = new()
         { 
-            // ["Spears"] = ("White_Palace_12", "wp_trap_spikes"),
+            ["Ref"] = ("GG_Ghost_Gorb", "Warrior/Ghost Warrior Slug"),
             // ["Godseeker"] = ("GG_Hornet_1", "GG_Arena_Prefab/Godseeker Crowd"),
             // ["Reference"] = ("GG_Hornet_1", "Boss Holder/Hornet Boss"),
         };
@@ -93,6 +93,14 @@ namespace AnyRadiance
                     return "Any Radiance";
                 case "ANY_RAD_DESC":
                     return "Why.";
+                case "TRUE_RADIANCE_1":
+                    return "";
+                case "TRUE_RADIANCE_2":
+                    return "";
+                case "TRUE_RADIANCE_3":
+                    return "";
+                case "TRUE_RADIANCE_4":
+                    return "";
                 default:
                     return orig;
             }

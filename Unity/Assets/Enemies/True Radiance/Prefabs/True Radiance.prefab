@@ -1,0 +1,384 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3822044187308031914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 962758133022686618}
+  - component: {fileID: 2366355192510509521}
+  - component: {fileID: -6285036833351563620}
+  - component: {fileID: 8402496573908880933}
+  - component: {fileID: 4347745861227573670}
+  - component: {fileID: 909573246068602498}
+  - component: {fileID: 3570206809698148847}
+  - component: {fileID: 6209607205081315037}
+  - component: {fileID: 2787534822627156105}
+  - component: {fileID: 6202076817997504574}
+  - component: {fileID: 8059441409671041952}
+  - component: {fileID: 4562465347968765681}
+  - component: {fileID: 4033845599808434659}
+  - component: {fileID: 7158062571628519015}
+  m_Layer: 0
+  m_Name: True Radiance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &962758133022686618
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822044187308031914}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &2366355192510509521
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822044187308031914}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!23 &-6285036833351563620
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822044187308031914}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c271c805f386dca48b717afe91ef0292, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &8402496573908880933
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822044187308031914}
+  m_Mesh: {fileID: 0}
+--- !u!114 &4347745861227573670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822044187308031914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fac570381f34f647b768dc5a5aa1364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collection: {fileID: 1006324594225480770, guid: f2ca6319626bfff4f82619bda6da3f55, type: 3}
+  _color: {r: 1, g: 1, b: 1, a: 1}
+  _scale: {x: 1, y: 1, z: 1}
+  _spriteId: 0
+  boxCollider2D: {fileID: 0}
+  polygonCollider2D: []
+  edgeCollider2D: []
+  boxCollider: {fileID: 0}
+  meshCollider: {fileID: 0}
+  meshColliderPositions: []
+  meshColliderMesh: {fileID: 0}
+  renderLayer: 0
+--- !u!114 &909573246068602498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822044187308031914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e54113e5604435b8ae87c7754f2725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  library: {fileID: 5169962789184284070, guid: 42d9e379824b90f4cb16d09e1027af80, type: 3}
+  defaultClipId: 0
+  playAutomatically: 1
+--- !u!61 &3570206809698148847
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822044187308031914}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.27352834, y: -0.65391064}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.2748942, y: 5.7546816}
+  m_EdgeRadius: 0
+--- !u!114 &6209607205081315037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822044187308031914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34fe8c447d1d9b40a25c5bba25b294e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageDealt: 2
+  hazardType: 1
+  shadowDashHazard: 0
+  resetOnEnable: 0
+--- !u!114 &2787534822627156105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822044187308031914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a0a01cad4a8924ca7a1d9dbc27f6b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPlayerPrefab: {fileID: 0}
+  regularInvincibleAudio:
+    Clip: {fileID: 0}
+    PitchMin: 0
+    PitchMax: 0
+    Volume: 0
+  blockHitPrefab: {fileID: 0}
+  strikeNailPrefab: {fileID: 0}
+  slashImpactPrefab: {fileID: 0}
+  fireballHitPrefab: {fileID: 0}
+  sharpShadowImpactPrefab: {fileID: 0}
+  corpseSplatPrefab: {fileID: 0}
+  enemyDeathSwordAudio:
+    Clip: {fileID: 0}
+    PitchMin: 0
+    PitchMax: 0
+    Volume: 0
+  enemyDamageAudio:
+    Clip: {fileID: 0}
+    PitchMin: 0
+    PitchMax: 0
+    Volume: 0
+  smallGeoPrefab: {fileID: 0}
+  mediumGeoPrefab: {fileID: 0}
+  largeGeoPrefab: {fileID: 0}
+  hp: 0
+  enemyType: 0
+  effectOrigin: {x: 0, y: 0, z: 0}
+  ignoreKillAll: 0
+  hpScale:
+    level1: 2700
+    level2: 3000
+    level3: 3000
+  battleScene: {fileID: 0}
+  sendHitTo: {fileID: 0}
+  sendKilledToObject: {fileID: 0}
+  sendKilledToName: 
+  smallGeoDrops: 0
+  mediumGeoDrops: 0
+  largeGeoDrops: 0
+  megaFlingGeo: 0
+  hasAlternateHitAnimation: 0
+  alternateHitAnimation: 
+  invincible: 0
+  invincibleFromDirection: 0
+  preventInvincibleEffect: 0
+  hasAlternateInvincibleSound: 0
+  alternateInvincibleSound: {fileID: 0}
+  deathAudioSnapshot: {fileID: 0}
+  hasSpecialDeath: 0
+  deathReset: 0
+  damageOverride: 0
+  ignoreAcid: 0
+  showGodfinderIcon: 0
+  showGodFinderDelay: 7
+  unlockBossScene: {fileID: 0}
+  ignoreHazards: 0
+  ignoreWater: 0
+  invulnerableTime: 0
+  semiPersistent: 0
+  isDead: 0
+--- !u!114 &6202076817997504574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822044187308031914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79a2366e82555e43b1507732af3c5af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8059441409671041952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822044187308031914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb2da7fecea45346bcba58e28c47b8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactClipTable: {fileID: 0}
+  audioPlayerPrefab: {fileID: 0}
+--- !u!114 &4562465347968765681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822044187308031914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8dafb6f1513cd74890579a01f9662c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectOrigin: {x: 0, y: 0, z: 0}
+  audioPlayerPrefab: {fileID: 0}
+  enemyDamage:
+    Clip: {fileID: 0}
+    PitchMin: 0
+    PitchMax: 0
+    Volume: 0
+  ghostHitPt: {fileID: 0}
+  slashEffectGhost1: {fileID: 0}
+  slashEffectGhost2: {fileID: 0}
+--- !u!114 &4033845599808434659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822044187308031914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7985fe117d4aa4d9c10a87b191f0eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  corpsePrefab: {fileID: 0}
+  corpseFacesRight: 0
+  corpseFlingSpeed: 0
+  corpseSpawnPoint: {x: 0, y: 0, z: 0}
+  deathBroadcastEvent: 
+  effectOrigin: {x: 0, y: 0, z: 0}
+  lowCorpseArc: 0
+  playerDataName: 
+  recycle: 0
+  rotateCorpse: 0
+  audioSnapshotOnDeath: {fileID: 0}
+  journalUpdateMessagePrefab: {fileID: 0}
+  enemyDeathType: 1
+  audioPlayerPrefab: {fileID: 0}
+  enemyDeathSwordAudio:
+    Clip: {fileID: 0}
+    PitchMin: 0
+    PitchMax: 0
+    Volume: 0
+  enemyDamageAudio:
+    Clip: {fileID: 0}
+    PitchMin: 0
+    PitchMax: 0
+    Volume: 0
+  enemyDeathSwordClip: {fileID: 0}
+  enemyDamageClip: {fileID: 0}
+  deathWaveInfectedPrefab: {fileID: 0}
+  deathWaveInfectedSmallPrefab: {fileID: 0}
+  spatterOrangePrefab: {fileID: 0}
+  deathPuffMedPrefab: {fileID: 0}
+  deathPuffLargePrefab: {fileID: 0}
+  dreamEssenceCorpseGetPrefab: {fileID: 0}
+  doKillFreeze: 1
+  uninfectedDeathPt: {fileID: 0}
+  slashEffectGhost1: {fileID: 0}
+  slashEffectGhost2: {fileID: 0}
+  whiteWave: {fileID: 0}
+--- !u!114 &7158062571628519015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822044187308031914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b622770e199e149859032bc03c2021, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  convoAmount: 8
+  convoTitle: TRUE_RADIANCE
+  startSuppressed: 0
+  noSoul: 0
+  dreamImpactPrefab: {fileID: 0}
+  allowUseChildColliders: 0

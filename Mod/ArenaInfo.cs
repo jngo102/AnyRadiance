@@ -40,9 +40,9 @@ namespace AnyRadiance
                         typeof(ArenaInfo).GetField($"A{phase}{fi.Name.Substring(7)}",
                             BindingFlags.NonPublic | BindingFlags.Static)?.GetValue(null));
                 }
-                catch (MissingFieldException _)
+                catch (MissingFieldException e)
                 {
-                    AnyRadiance.Instance.Log($"Phase {phase} does not exist!");
+                    AnyRadiance.Instance.LogError($"{e}: Phase {phase} does not exist!");
                     throw;
                 }
             }

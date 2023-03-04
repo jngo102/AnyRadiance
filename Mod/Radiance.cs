@@ -1,11 +1,17 @@
+using System;
 using HutongGames.PlayMaker;
 using HutongGames.PlayMaker.Actions;
 using Modding;
 using Modding.Utils;
 using System.Collections;
 using System.Linq;
+using AnyRadiance.Actions;
+using HKAIFramework;
+using MonoMod.Cil;
 using UnityEngine;
 using Vasi;
+using Action = HKAIFramework.Action;
+using Random = UnityEngine.Random;
 
 namespace AnyRadiance
 {
@@ -46,9 +52,102 @@ namespace AnyRadiance
 
         private byte _phase;
         private static Coroutine _logic;
+        public static GameObject Self { get; private set; }
+
+        private static readonly ActionSequence _nailWalls = new()
+        {
+            Name = "Nail Walls",
+            Actions = new Action[]
+            {
+                new NailWalls(),
+            }
+        };
+
+        private static readonly ActionSequence _laserColumns = new()
+        {
+            Name = "Laser Columns",
+            Actions = new Action[]
+            {
+                new LaserColumns(),
+            }
+        };
+
+        private static readonly ActionSequence _summonSplitterP1 = new()
+        {
+            Name = "Summon Splitter",
+            Actions = new Action[]
+            {
+                new SummonSplitter(2.0f / 3, 0.5f, 1.5f, 12, 2, 2, 1.5f, 2),
+            }
+        };
+
+        private static readonly ActionSequence _summonBeamOrbP1 = new()
+        {
+            Name = "Summon Beam Orb",
+            Actions = new Action[]
+            {
+                new SummonBeamOrb(false, 0, 15, 0.25f, 3, 3, 0.5f, 2),
+            }
+        };
+
+        private static readonly ActionSequence _nailBarrage = new()
+        {
+            Name = "Nail Barrage",
+            Actions = new Action[]
+            {
+                new NailBarrage(),
+            }
+        };
+
+        private static readonly ActionSequence _summonBeamOrbP2 = new()
+        {
+            Name = "Summon Beam Orb",
+            Actions = new Action[]
+            {
+                new SummonBeamOrb(true, 30, 45, 0.1f, 6, 5, 1, float.MaxValue, true),
+            }
+        };
+
+        private static readonly ActionSequence _summonSplitterP2 = new()
+        {
+            Name = "Summon Splitter",
+            Actions = new Action[]
+            {
+                new SummonSplitter(1, 0.5f, 2, 12, 2, 2, 2, 2),
+            }
+        };
+
+        private readonly ActionSet _phase1Subphase1Actions = new()
+        {
+            TrackedSequences = new Tuple<ActionSequence, float, int>[]
+            {
+                new(_nailWalls, 0.5f, 2),
+                new(_laserColumns, 0.5f, 2),
+            }
+        };
+
+        private readonly ActionSet _phase1Subphase2Actions = new()
+        {
+            TrackedSequences = new Tuple<ActionSequence, float, int>[]
+            {
+                new(_summonSplitterP1, 1.0f / 3, 2),
+                new(_summonBeamOrbP1, 1.0f / 3, 2),
+            }
+        };
+
+        private readonly ActionSet _phase2Actions = new()
+        {
+            TrackedSequences = new Tuple<ActionSequence, float, int>[]
+            {
+                new(_summonSplitterP2, 0.5f, 2),
+                new(_nailBarrage, 0.5f, 2),
+            }
+        };
 
         private void Awake()
         {
+            Self = gameObject;
+
             _animator = GetComponent<tk2dSpriteAnimator>();
             _audio = GetComponent<AudioSource>();
             _collider = GetComponent<PolygonCollider2D>();
@@ -398,16 +497,7 @@ namespace AnyRadiance
             GameCameras.instance.cameraShakeFSM.SendEvent("BigShake");
             yield return TeleIn(new Vector3(Random.Range(ArenaInfo.CurrentLeft, ArenaInfo.CurrentRight), Random.Range(ArenaInfo.CurrentBottom, ArenaInfo.CurrentTop), transform.position.z));
 
-            yield return SummonBeamOrb(
-                true,
-                30,
-                45,
-                0.1f,
-                6,
-                5,
-                1,
-                float.MaxValue,
-                true);
+            yield return _summonBeamOrbP2.Execute();
 
             _healthManager.hp = Phase1HP;
             while (_healthManager.hp >= UltraOrbHP)
@@ -429,55 +519,17 @@ namespace AnyRadiance
 
         private IEnumerator ChooseAttackP1()
         {
-            var attackOptions = new[] { LaserColumns(), NailWalls() };
-            var extraAttacks = new[]
-            {
-                NailBarrage(), 
-                SummonBeamOrb(
-                    false, 
-                    0, 
-                    15, 
-                    0.25f, 
-                    3, 
-                    3, 
-                    0.5f, 
-                    2), 
-                SummonMegaOrb(
-                    2.0f / 3, 
-                    0.5f, 
-                    1.5f, 
-                    12, 
-                    2, 
-                    2, 
-                    1.5f, 
-                    2),
-            };
-            var chosenAttack = attackOptions[Random.Range(0, attackOptions.Length)];
+            yield return _phase1Subphase1Actions.RandomSequence().Execute();
             if (_healthManager.hp <= Phase1HP / 2)
             {
                 // Perform another attack simultaneously
-                var extraAttack = extraAttacks[Random.Range(0, extraAttacks.Length)];
-                StartCoroutine(extraAttack);
+                StartCoroutine(_phase1Subphase2Actions.RandomSequence().Execute());
             }
-            yield return chosenAttack;
         }
 
         private IEnumerator ChooseAttackP2()
         {
-            var attackOptions = new[] { 
-                NailBarrage(),
-                SummonMegaOrb(
-                    1, 
-                    0.5f, 
-                    2, 
-                    12, 
-                    2, 
-                    2, 
-                    2, 
-                    2)
-            };
-            var chosenAttack = attackOptions[Random.Range(0, attackOptions.Length)];
-            yield return chosenAttack;
+            yield return _phase2Actions.RandomSequence().Execute();
         }
     }
 }
