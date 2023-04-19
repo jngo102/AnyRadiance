@@ -2,67 +2,122 @@ name: Build and Publish
 
 on:
   push:
-    branches: main
-  pull_request:
+    branches: [main]
 
 jobs:
   build:
-    name: Build and create release
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [{ version: ubuntu-latest, suffix: Linux }, 
+             { version: windows-latest, suffix: Windows }, 
+             { version: macos-latest, suffix: OSX }]
+    name: Build
+    runs-on: ${{ matrix.os.version }}
+    outputs:
+      VERSION: ${{ steps.get_version.outputs.version }}
+      HASH_LINUX: ${{ steps.get_hash_linux.outputs.hash }}
+      HASH_OSX: ${{ steps.get_hash_osx.outputs.hash }}
+      HASH_WINDOWS: ${{ steps.get_hash_windows.outputs.hash }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       
-      - name: Fetch Unity Engine modules
-        run: |
-          wget https://files.catbox.moe/i4sdl6.zip -O UnityModules.zip
-          unzip UnityModules.zip -d References
+      - name: Setup HK
+        uses: BadMagic100/setup-hk@v1
+        with:
+            apiPath: References/
+            dependencyFilePath: ModDependencies.txt
 
-      - name: Fetch API files
+      - name: Setup MSBuild Linux
+        if: matrix.os.suffix == 'Linux'
         run: |
-          wget https://github.com/hk-modding/api/releases/latest/download/ModdingApiWin.zip -O API.zip
-          unzip -o API.zip -d References
+          sudo apt-get install -y nuget mono-devel
 
-      - name: Fetch a dependency
+      - name: Setup MSBuild Windows
+        if: matrix.os.suffix == 'Windows'
+        uses: microsoft/setup-msbuild@v1
+
+      - name: Setup MSBuild OSX
+        if: matrix.os.suffix == 'OSX'
         run: |
-          wget https://github.com/fifty-six/HollowKnight.Vasi/releases/download/v2/Vasi.zip -O Vasi.zip
-          unzip -o Vasi.zip -d References
-          
-      - name: Setup MSBuild
-        run: sudo apt-get install -y nuget mono-devel mono-xbuild
+          brew install --overwrite --dry-run nuget
+          brew install --overwrite --dry-run mono
 
       - name: Restore packages
         run: nuget restore AnyRadiance.csproj
 
       - name: Build project
-        run: dotnet build --configuration Release AnyRadiance.csproj
+        run: dotnet build --configuration Release
 
-      - name: Get SHA256 of zipped mod
-        id: get_hash
-        run: echo "::set-output name=hash::$(sha256sum Output/AnyRadiance.zip | cut -d ' ' -f 1)"
+      - name: Get SHA256 of zipped mod Linux
+        if: matrix.os.suffix == 'Linux'
+        id: get_hash_linux
+        run: echo "hash=$(sha256sum Output/AnyRadiance_Linux.zip | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
+    
+      - name: Get SHA256 of zipped mod OSX
+        if: matrix.os.suffix == 'OSX'
+        id: get_hash_osx
+        run: echo "hash=$(sha256sum Output/AnyRadiance_OSX.zip | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
+
+      - name: Get SHA256 of zipped mod Windows
+        if: matrix.os.suffix == 'Windows'
+        id: get_hash_windows
+        run: |
+          certutil -hashfile Output/AnyRadiance_Windows.zip SHA256 > out.txt
+          $hash=(Get-Content -Path out.txt -TotalCount 2)[-1]
+          echo "hash::$hash" >> $GITHUB_OUTPUT
 
       - name: Get Assembly version
+        if: matrix.os.suffix != 'Windows'
         id: get_version
-        run: echo "::set-output name=version::$(cat < Version.txt)"
+        run: echo "version=$(cat < Version.txt)" > $GITHUB_OUTPUT
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: AnyRadiance_${{ matrix.os.suffix }}
+          path: Output/AnyRadiance_${{ matrix.os.suffix }}.zip
+  create_release:
+    needs: build
+    runs-on: ubuntu-latest
+    outputs:
+     UPLOAD_URL: ${{ steps.create_release.outputs.upload_url }}
+    steps:
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.get_version.outputs.version }}
-          release_name: Release v${{ steps.get_version.outputs.version }}
-          body: "SHA256: ${{ steps.get_hash.outputs.hash }}"
-          draft: false
-          prerelease: false
+            tag_name: ${{ needs.build.outputs.VERSION }}
+            release_name: Release v${{ needs.build.outputs.VERSION }}
+            body: |
+                SHA256:
+                Linux: ${{ needs.build.outputs.HASH_LINUX }}
+                OSX: ${{ needs.build.outputs.HASH_OSX }}
+                Windows: ${{ needs.build.outputs.HASH_WINDOWS }}
+            draft: false
+            prerelease: false
+  upload_assets:
+    needs: create_release
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [Linux, OSX, Windows]
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: AnyRadiance_${{ matrix.os }}
+          path: ./
 
       - name: Upload release asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: Output/AnyRadiance.zip
-          asset_name: AnyRadiance.zip
+          upload_url: ${{ needs.create_release.outputs.UPLOAD_URL }}
+          asset_path: AnyRadiance_${{ matrix.os }}.zip
+          asset_name: AnyRadiance_${{ matrix.os }}.zip
           asset_content_type: application/zip
+      

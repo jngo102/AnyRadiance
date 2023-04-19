@@ -160,11 +160,6 @@ namespace AnyRadiance
                             GameObjects.Add(gameObject.name, gameObject);
                         }
                     }
-                    //else if (resourceName.Contains("truerad"))
-                    //{
-                    //    var bundle = AssetBundle.LoadFromStream(stream);
-                    //    Bundles.Add(bundle.name, bundle);
-                    //}
 
                     stream.Dispose();
                 }

@@ -45,7 +45,9 @@
     <MakeDir Directories="$(ExportDir)/zip" />
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ExportDir)/zip" />
     <Copy SourceFiles="ReadMe.md;$(TargetPath);$(TargetDir)/$(TargetName).pdb" DestinationFolder="$(ExportDir)/zip/" />
-    <ZipDirectory SourceDirectory="$(ExportDir)/zip" DestinationFile="$(ExportDir)/$(TargetName).zip" />
+	  <ZipDirectory Condition="$([MSBuild]::IsOSPlatform('Linux'))" SourceDirectory="$(ExportDir)/zip" DestinationFile="$(ExportDir)/$(TargetName)_Linux.zip" />
+    <ZipDirectory Condition="$([MSBuild]::IsOSPlatform('OSX'))" SourceDirectory="$(ExportDir)/zip" DestinationFile="$(ExportDir)/$(TargetName)_OSX.zip" />
+    <ZipDirectory Condition="$([MSBuild]::IsOSPlatform('Windows'))" SourceDirectory="$(ExportDir)/zip" DestinationFile="$(ExportDir)/$(TargetName)_Windows.zip" />
     <RemoveDir Directories="$(ExportDir)/zip" />
     <PropertyGroup>
       <OutputFileString>$(AssemblyVersion)</OutputFileString>
@@ -336,7 +338,8 @@
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="ReadMe.md" />
-    <EmbeddedResource Include="Assets\anyrad" />
-    <!--<EmbeddedResource Include="Assets\truerad" />-->
+	  <EmbeddedResource Condition="$([MSBuild]::IsOSPlatform('Linux'))" Include="Assets\anyradlin" />
+    <EmbeddedResource Condition="$([MSBuild]::IsOSPlatform('OSX'))" Include="Assets\anyradmac" />
+    <EmbeddedResource Condition="$([MSBuild]::IsOSPlatform('Windows'))" Include="Assets\anyradwin" />
   </ItemGroup>
 </Project>
